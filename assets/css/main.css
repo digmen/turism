@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-inter: 'Inter', sans-serif;
+    --font-open-sans: 'Open Sans', sans-serif;
+    --font-montserrat: 'Montserrat', serif;
+
+    --swiper-pagination-bullet-inactive-color: #D9D9D9;
+    --swiper-pagination-color: #990711;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-size: 20px;
+
+    --swiper-navigation-color: #292D32;
+
+
+    --card_width: 350px;
+    --row_increment: 13px;
+    --card_small: 26;
+    --card_medium: 33;
+    --card_large: 26;
+}
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: var(--font-open-sans);
+}
+
+button {
+    border: none;
+}
+
+.container {
+    max-width: 1239px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1025px) {
+    .container {
+        max-width: 884px;
+    }
+}
