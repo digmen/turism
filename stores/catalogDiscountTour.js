@@ -1,23 +1,21 @@
 import { defineStore } from 'pinia';
-import { fetchRoute } from '@/utils/api';
+import { fetchCatalogDiscountTours } from '@/utils/api';
 
-export const useRouteStore = defineStore('route', {
+export const useCatalogDiscountTourStore = defineStore('catalogDiscountTour', {
     state: () => ({
-        route: [],
+        discountTours: [],
         loading: false,
         error: null,
     }),
 
-
     actions: {
-        async loadRoute(id) {
+        async loadDiscountTours() {
             this.loading = true;
             this.error = null;
             try {
-                const data = await fetchRoute(id);
-                this.route = data;
+                const data = await fetchCatalogDiscountTours();
+                this.discountTours = data;
             } catch (error) {
-                console.error('Ошибка при загрузке путей:', error);
                 this.error = error.message;
             } finally {
                 this.loading = false;

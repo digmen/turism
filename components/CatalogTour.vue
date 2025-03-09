@@ -7,7 +7,8 @@
         </div>
         <div v-if="error" role="alert">{{ error }}</div>
         <div v-if="tours.length === 0 && !loading && !error" role="alert">Нет доступных туров для отображения.</div>
-        <div v-for="(tour, index) in tours" :key="tour.id" :class="getCardClass(index)" @click="goToDetails(tour.id)">
+        <div class="catalog-tour__item-container" v-for="(tour, index) in tours" :key="tour.id"
+          :class="getCardClass(index)" @click="goToDetails(tour.id)">
           <img class="catalog-tour__item-image" :src="tour.background_image" :alt="`Изображение тура: ${tour.title}`"
             loading="lazy" />
           <div class="catalog-tour__item-info">
@@ -87,6 +88,10 @@ export default {
   grid-template-columns: repeat(auto-fill, var(--card_width));
   grid-auto-rows: var(--row_increment);
   justify-content: center;
+}
+
+.catalog-tour__item-container {
+  cursor: pointer;
 }
 
 .catalog-tour__item-image {

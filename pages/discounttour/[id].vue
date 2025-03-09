@@ -15,7 +15,10 @@
                     <div class="tour-content__top-title">
                         <h1>{{ tour.title }}</h1>
                         <p>{{ tour.subtitle }}</p>
-                        <p class="tour-content__top-price">{{ tour.price }}$</p>
+                        <div class="tour-content__top-price-div">
+                            <span class="tour-content__top-price">{{ tour.discount_price }}$</span>
+                            <span class="tour-content__top-price-old">{{ tour.original_price }}$</span>
+                        </div>
                         <Button title="Забронировать" />
                     </div>
                 </div>
@@ -40,10 +43,9 @@
 
 <script>
 import { useRoute, useRouter } from 'vue-router';
-import { useTourStore } from '@/stores/tour';
 import { computed, watch } from 'vue';
 import Button from '@/ui/Button.vue';
-import { useRouteStore } from '~/stores/route';
+import { useDiscountTourStore } from '~/stores/discountTour';
 export default {
     components: {
         Button
@@ -51,13 +53,14 @@ export default {
     setup() {
         const route = useRoute();
         const router = useRouter();
-        const tourStore = useTourStore();
-        const routeStore = useRouteStore();
+        const discountTourStore = useDiscountTourStore();
 
         watch(
             () => route.params.id,
             (id) => {
-                if (id) tourStore.loadTour(id);
+                if (id) {
+                    discountTourStore.loadTour(id);
+                }
             },
             { immediate: true }
         );
@@ -71,12 +74,9 @@ export default {
         };
 
         return {
-            tour: computed(() => tourStore.tour || {}),
-            loading: computed(() => tourStore.loading),
-            error: computed(() => tourStore.error),
-            route: computed(() => routeStore.route || {}),
-            loadingRoute: computed(() => routeStore.loading),
-            errorRoute: computed(() => routeStore.error),
+            tour: computed(() => discountTourStore.discountTour || {}),
+            loading: computed(() => discountTourStore.loading),
+            error: computed(() => discountTourStore.error),
             goToDetails,
             goBack,
         };
@@ -128,6 +128,12 @@ export default {
         height: 100%;
         padding: 24px 55px;
 
+        .tour-content__top-price-div {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
         .tour-content__top-price {
             font-size: 82px;
             font-weight: 900;
@@ -135,6 +141,19 @@ export default {
             color: #990711;
             padding-top: 20px;
             padding-bottom: 40px;
+        }
+
+        .tour-content__top-price-old {
+            font-size: 45px;
+            font-weight: 900;
+            font-family: var(--font-montserrat);
+            color: #2D2D2D;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            text-decoration: line-through;
+            text-decoration-color: #990711;
+            text-decoration-thickness: 3px;
+            text-decoration-skip-ink: none;
         }
 
         h1 {

@@ -96,3 +96,63 @@ export const fetchSlider = async () => {
         throw error
     }
 }
+
+export const fetchRoute = async (id) => {
+    try {
+        const response = await fetch(`${API_URL}/tour/${id}/route/?language=en`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Ошибка при получение данных путей:', error);
+        throw error;
+    }
+}
+
+
+export const fetchDiscountTour = async (id) => {
+    try {
+        const response = await fetch(`${API_URL}/discount-tour/${id}/?language=en`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Ошибка при получение данных горячего тура:', error);
+        throw error;
+    }
+}
+
+
+export const fetchCatalogDiscountTours = async () => {
+    try {
+        const response = await fetch(`${API_URL}/discount-tours/?language=en`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Ошибка при получение данных горячих туров:', error);
+        throw error;
+    }
+}
+

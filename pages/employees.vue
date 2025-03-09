@@ -3,13 +3,12 @@
         <article class="employees">
             <h1>Сотрудники нашей компании</h1>
         </article>
+        <article>
+            <div v-if="loading" class="loading">Загрузка...</div>
+            <div v-else-if="error" class="error">{{ error }}</div>
+            <div v-if="employees.length === 0 && !loading && !error" role="alert" class="no-data">Нет сотрудников</div>
+        </article>
         <article class="employees__content">
-            <div v-if="loading" aria-live="polite" class="catalog-tour__loading">Загрузка сотрудников, пожалуйста,
-                подождите...
-            </div>
-            <div v-if="error" role="alert">{{ error }}</div>
-            <div v-if="employees.length === 0 && !loading && !error" role="alert">Нет доступных сотрудников для
-                отображения.</div>
             <div v-for="(employee, index) in employees" :key="employee.id" class="employees__content-item">
                 <img class="catalog-tour__item-image" :src="employee.photo" :alt="`Сотрудник: ${employee.name}`"
                     loading="lazy" />
@@ -64,11 +63,10 @@ export default {
 }
 
 .employees__content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     gap: 36px;
-    /* justify-content: space-between; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
 }
 
 .employees__content-item {
@@ -93,5 +91,33 @@ export default {
     font-size: 16px;
     font-weight: 400;
     font-family: var(--font-open-sans);
+}
+
+.employees__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d2d2d;
+}
+
+.loading,
+.error,
+.no-data {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-family: var(--font-open-sans);
+    font-size: 16px;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.no-data {
+    color: #666;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <swiper :modules="modules" :slides-per-view="1" :space-between="10" :pagination="{ clickable: true }" navigation
-    :speed="1500" :autoplay="{ delay: 1500, disableOnInteraction: false }" loop class="mySwiper">
+    :speed="1500" :autoplay="{ delay: 2000, disableOnInteraction: false }" loop class="mySwiper">
     <swiper-slide v-for="(slide, index) in sliderData" :key="index">
       <div class="slider__item">
         <div class="slider__item-img">
@@ -48,7 +48,7 @@ export default {
     });
 
     const goToDetails = (id) => {
-      router.push(`/tour/${id}`);
+      router.push(`/discounttour/${id}`);
     };
 
     return {

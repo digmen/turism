@@ -21,6 +21,11 @@
   background-color: #680007;
   transition: 0.1s;
 }
+
+.btn:hover {
+  background-color: #900811;
+  transition: 0.1s;
+}
 </style>
 
 
