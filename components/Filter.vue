@@ -7,7 +7,7 @@
     <div class="filter__container">
         <form class="filter__form" aria-label="Форма фильтрации туров">
             <CustomSelect
-                :options="['go', 'python', 'rust', 'javascript']"
+                :options="['Киргизия', 'Турция', 'Турция', 'Турция']"
                 :default="'Выбрать направление '"
                 class="select"
                 @input="handleInput($event)"
@@ -15,7 +15,7 @@
                 aria-label="Выбор направления"
             />
             <CustomSelect
-                :options="['go', 'python', 'rust', 'javascript']"
+                :options="['январь', 'февраль', 'март', 'апрель']"
                 :default="'Выбрать месяц '"
                 class="select"
                 @input="handleInput($event)"
@@ -23,7 +23,7 @@
                 aria-label="Выбор месяца"
             />
             <CustomSelect
-                :options="['go', 'python', 'rust', 'javascript']"
+                :options="['тур 1', 'тур 2', 'тур 3', 'тур 4']"
                 :default="'Выбрать тур '"
                 class="select"
                 @input="handleInput($event)"    

@@ -1,10 +1,10 @@
 <template>
   <swiper :modules="modules" :slides-per-view="1" :space-between="10" :pagination="{ clickable: true }" navigation
-    :speed="1500" :autoplay="{ delay: 2000, disableOnInteraction: false }" loop class="mySwiper">
+    :speed="1500" :autoplay="{ delay: 3000, disableOnInteraction: false }" loop class="mySwiper">
     <swiper-slide v-for="(slide, index) in sliderData" :key="index">
       <div class="slider__item">
         <div class="slider__item-img">
-          <img :src="slide.background_image" :alt="slide.altText">
+          <img :src="slide.image" :alt="slide.altText">
         </div>
         <div class="slider__item-content">
           <h3 class="slider__item-title">

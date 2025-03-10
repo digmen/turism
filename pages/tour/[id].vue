@@ -29,9 +29,33 @@
                 </div>
             </div>
             <article class="tour-route">
-                <h2>Маршрут</h2>
-                <div v-for="item in route" :key="item.id">
-                    <p>{{ item.name }}</p>
+                <div v-for="item in routeStartEnd" :key="item.id">
+                    <div class="tour-route__start">
+                        <div class="tour-route__start-img">
+                            <img src="@/assets/images/geotag.svg" alt="start">
+                            <div class="route_line"></div>
+                        </div>
+                        <div class="tour-route__start-title">
+                            <h3>{{ item.start_title }}</h3>
+                            <p>{{ item.start_description }}</p>
+                        </div>
+                    </div>
+                    <div v-for="item in route" :key="item.id">
+                        <div class="tour-route__item">
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.description }}</p>
+                        </div>
+                        <div class="tour-route__img-container">
+                            <img class="tour-route__img" :src="item.picture" :alt="item.title">
+                        </div>
+                    </div>
+                    <div class="tour-route__end">
+                        <img src="@/assets/images/geotag.svg" alt="end">
+                        <div class="tour-route__end-title">
+                            <h3>{{ item.end_title }}</h3>
+                            <p>{{ item.end_description }}</p>
+                        </div>
+                    </div>
                 </div>
             </article>
         </article>
@@ -43,7 +67,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useTourStore } from '@/stores/tour';
 import { computed, watch } from 'vue';
 import Button from '@/ui/Button.vue';
-import { useRouteStore } from '~/stores/route';
+import { useRouteStore, useRouteStartEndStore } from '~/stores/route';
 export default {
     components: {
         Button
@@ -53,11 +77,16 @@ export default {
         const router = useRouter();
         const tourStore = useTourStore();
         const routeStore = useRouteStore();
+        const routeStartEndStore = useRouteStartEndStore();
 
         watch(
             () => route.params.id,
             (id) => {
-                if (id) tourStore.loadTour(id);
+                if (id) {
+                    tourStore.loadTour(id);
+                    routeStore.loadRoute(id);
+                    routeStartEndStore.loadRouteStartEnd(id);
+                }
             },
             { immediate: true }
         );
@@ -77,6 +106,9 @@ export default {
             route: computed(() => routeStore.route || {}),
             loadingRoute: computed(() => routeStore.loading),
             errorRoute: computed(() => routeStore.error),
+            routeStartEnd: computed(() => routeStartEndStore.routeStartEnd || {}),
+            loadingRouteStartEnd: computed(() => routeStartEndStore.loading),
+            errorRouteStartEnd: computed(() => routeStartEndStore.error),
             goToDetails,
             goBack,
         };
@@ -166,6 +198,59 @@ export default {
         font-weight: 500;
         font-family: var(--font-open-sans);
         font-size: 20px;
+    }
+}
+
+.tour-route__start {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: start;
+
+    .tour-route__start-img {
+        width: 30px;
+        height: 30px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    h3 {
+        font-family: var(--font-open-sans);
+        font-size: 20px;
+    }
+
+    p {}
+}
+
+.route_line {
+    border: none;
+    border-top: 1px dotted #f00;
+    color: #fff;
+    background-color: #fff;
+    height: 1px;
+    width: 50%;
+}
+
+.tour-route__end {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: start;
+}
+
+.tour-route__img-container {
+    width: 458px;
+    height: 232px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0px 40px 0px 40px;
     }
 }
 </style>

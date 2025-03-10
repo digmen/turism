@@ -5,31 +5,33 @@
         <section class="footer__bottom">
             <article class="footer__bottom-top">
                 <div class="footer__bottom-top-left">
-                    <NuxtLink to="/catalog" aria-label="Перейти к каталогу">
+                    <a href="#catalog" aria-label="Перейти к каталогу">
                         <span>Каталог</span>
                         <img src="/assets/images/arrowfooterleft.svg" alt="Стрелка вверх вправо">
-                    </NuxtLink>
+                    </a>
                 </div>
                 <div class="footer__bottom-top-right">
-                    <NuxtLink to="#header" aria-label="Вернуться к началу страницы">
+                    <a href="#header" aria-label="Вернуться к началу страницы">
                         <img src="/assets/images/arrowup.svg" alt="Стрелка вверх">
-                    </NuxtLink>
+                    </a>
                 </div>
             </article>
             <article class="footer__bottom-bottom">
                 <article class="footer__bottom-bottom-left">
                     <div class="footer__links">
-                        <NuxtLink class="footer__link" to="#catalog" aria-label="Перейти на главную страницу">
-                            Главная&nbsp;&nbsp;/&nbsp;&nbsp;</NuxtLink>
-                        <NuxtLink class="footer__link" to="#catalog" aria-label="Перейти к каталогу туров">Каталог
-                            туров&nbsp;&nbsp;/&nbsp;&nbsp;</NuxtLink>
-                        <NuxtLink class="footer__link" to="#catalog" aria-label="Перейти к горящим турам">Горящие
-                            туры&nbsp;&nbsp;/&nbsp;&nbsp;</NuxtLink><br />
-                        <NuxtLink class="footer__link" to="#catalog" aria-label="Перейти к отзывам">
-                            Отзывы&nbsp;&nbsp;/&nbsp;&nbsp;</NuxtLink>
-                        <NuxtLink class="footer__link" to="#catalog" aria-label="Перейти к сотрудникам">
-                            Сотрудники&nbsp;&nbsp;/&nbsp;&nbsp;</NuxtLink>
-                        <NuxtLink class="footer__link" to="#catalog" aria-label="Перейти к блогу">Блог</NuxtLink>
+                        <NuxtLink class="footer__link" to="/" aria-label="Перейти на главную страницу">
+                            Главная&nbsp;&nbsp;/&nbsp;&nbsp;
+                        </NuxtLink>
+                        <NuxtLink class="footer__link" to="/" aria-label="Перейти к каталогу туров">
+                            Каталог туров&nbsp;&nbsp;/&nbsp;&nbsp;
+                        </NuxtLink>
+                        <NuxtLink class="footer__link" to="/hottours" aria-label="Перейти к горящим турам">
+                            Горящие туры&nbsp;&nbsp;/&nbsp;&nbsp;
+                        </NuxtLink>
+                        <br />
+                        <NuxtLink class="footer__link" to="/employees" aria-label="Перейти к сотрудникам">
+                            Сотрудники
+                        </NuxtLink>
                     </div>
                     <div class="footer__socials">
                         <NuxtLink class="footer__social-link" to="#catalog" aria-label="Перейти в Telegram">

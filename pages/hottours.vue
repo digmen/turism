@@ -140,10 +140,6 @@ export default {
 }
 
 .catalog__content {
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px; */
     gap: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

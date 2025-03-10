@@ -37,7 +37,7 @@ export default {
     });
 
     const goToDetails = (id) => {
-      router.push(`/catalogtour/${id}`);
+      router.push(`/catalog/${id}`);
     };
 
     const getCardClass = (index) => {
