@@ -29,28 +29,39 @@
                 </div>
             </div>
             <article class="tour-route">
+                <div class="line_container"></div>
                 <div v-for="item in routeStartEnd" :key="item.id">
                     <div class="tour-route__start">
-                        <div class="tour-route__start-img">
+                        <div class="geotag_container">
                             <img src="@/assets/images/geotag.svg" alt="start">
-                            <div class="route_line"></div>
                         </div>
                         <div class="tour-route__start-title">
                             <h3>{{ item.start_title }}</h3>
                             <p>{{ item.start_description }}</p>
                         </div>
                     </div>
-                    <div v-for="item in route" :key="item.id">
-                        <div class="tour-route__item">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.description }}</p>
-                        </div>
-                        <div class="tour-route__img-container">
-                            <img class="tour-route__img" :src="item.picture" :alt="item.title">
+                    <div class="tour-route__center">
+                        <div v-for="(item, index) in route" :key="item.id" class="tour-route__item">
+                            <div class="geotag_container">
+                                <img src="@/assets/images/geotag.svg" alt="start">
+                            </div>
+                            <div class="tour-route__item-container">
+                                <div class="tour-route__item-title">
+                                    <h3> {{ index + 1 }}. {{ item.title }}</h3>
+                                    <ul>
+                                        <li>
+                                            {{ item.description }}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tour-route__img-container">
+                                    <img class="tour-route__img" :src="item.picture" :alt="item.title">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="tour-route__end">
-                        <img src="@/assets/images/geotag.svg" alt="end">
+                        <img src="@/assets/images/finish.svg" alt="finish">
                         <div class="tour-route__end-title">
                             <h3>{{ item.end_title }}</h3>
                             <p>{{ item.end_description }}</p>
@@ -201,45 +212,102 @@ export default {
     }
 }
 
+.tour-route {
+    display: flex;
+}
+
+.line_container {
+    background-image: url('@/assets/images/line.svg');
+    width: 100px;
+    background-repeat: repeat-y;
+    background-position: bottom;
+}
+
+.tour-route__item-container {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+
+    .tour-route__item-title {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        ul {
+            padding-left: 50px;
+
+            li {
+                width: 470px;
+            }
+        }
+
+    }
+}
+
+.geotag_container {}
+
+.tour-route__center {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.tour-route__item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: start;
+    margin-top: 100px;
+}
+
 .tour-route__start {
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: start;
+    margin-bottom: 30px;
 
-    .tour-route__start-img {
-        width: 30px;
-        height: 30px;
+    .tour-route__start-title {
+        h3 {
+            font-size: 25px;
+            font-family: var(--font-open-sans);
+            font-weight: 700;
+            color: #2D2D2D;
+        }
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        p {
+            font-size: 22px;
+            font-family: var(--font-open-sans);
+            font-weight: 400;
+            color: #2D2D2D;
+            text-align: justify;
         }
     }
-
-    h3 {
-        font-family: var(--font-open-sans);
-        font-size: 20px;
-    }
-
-    p {}
-}
-
-.route_line {
-    border: none;
-    border-top: 1px dotted #f00;
-    color: #fff;
-    background-color: #fff;
-    height: 1px;
-    width: 50%;
 }
 
 .tour-route__end {
+    margin-top: 113px;
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: start;
+
+    .tour-route__end-title {
+        h3 {
+            font-size: 25px;
+            font-family: var(--font-open-sans);
+            font-weight: 700;
+            color: #2D2D2D;
+        }
+
+        p {
+            font-size: 22px;
+            font-family: var(--font-open-sans);
+            font-weight: 400;
+            color: #2D2D2D;
+            text-align: justify;
+        }
+    }
 }
 
 .tour-route__img-container {

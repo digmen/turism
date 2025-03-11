@@ -34,33 +34,42 @@
                         </NuxtLink>
                     </div>
                     <div class="footer__socials">
-                        <NuxtLink class="footer__social-link" to="#catalog" aria-label="Перейти в Telegram">
+                        <a class="footer__social-link" href="https://t.me/awesometravelkg"
+                            aria-label="Перейти в Telegram">
                             <img class="footer__social-icon" src="/assets/images/telegram.svg" alt="Telegram">
-                        </NuxtLink>
-                        <NuxtLink class="footer__social-link" to="#catalog" aria-label="Перейти в WhatsApp">
+                        </a>
+                        <a class="footer__social-link" href="https://wa.me/996707498308"
+                            aria-label="Перейти в WhatsApp">
                             <img class="footer__social-icon" src="/assets/images/whatsapp.svg" alt="WhatsApp">
-                        </NuxtLink>
-                        <NuxtLink class="footer__social-link" to="#catalog" aria-label="Перейти в Instagram">
+                        </a>
+                        <a class="footer__social-link"
+                            href="https://www.instagram.com/awesome_travel_kg_?igsh=YW9iYTh2cGp0ZXJl&utm_source=qr"
+                            aria-label="Перейти в Instagram">
                             <img class="footer__social-icon" src="/assets/images/instagram.svg" alt="Instagram">
-                        </NuxtLink>
+                        </a>
                     </div>
                 </article>
                 <article class="footer__bottom-bottom-left">
                     <div class="footer__contacts">
                         <span class="footer__contact-title">Наши контакты</span>
-                        <NuxtLink class="footer__contact-link" aria-label="Позвонить по телефону +996 000 88-76-54">+996
-                            000 88-76-54</NuxtLink>
+                        <a class="footer__contact-link" aria-label="Позвонить по телефону +996 707 498 308"
+                            href="tel:+996707498308">
+                            +996 707 498 308
+                        </a>
                     </div>
                     <div class="footer__email">
                         <span class="footer__email-title">Email</span>
-                        <NuxtLink class="footer__email-link" aria-label="Отправить письмо на hello@logoipsum.com">
-                            hello@logoipsum.com</NuxtLink>
+                        <a href="mailto:awesometravelkg@gmail.com" class="footer__email-link"
+                            aria-label="Отправить письмо на awesometravelkg@gmail.com">
+                            awesometravelkg@gmail.com
+                        </a>
                     </div>
                 </article>
                 <article class="footer__bottom-bottom-left">
                     <div class="footer__address">
                         <span class="footer__address-title">Адрес</span>
-                        <span class="footer__address-detail">г. Бишкек, ул. МММММММММ</span>
+                        <a class="footer__address-detail" href="https://maps.app.goo.gl/xMrbRfziHfjJGvFu5"
+                            target="_blank" rel="noopener noreferrer">г. Бишкек, ул. Фрунзе 113</a>
                     </div>
                     <div class="footer__hours">
                         <span class="footer__hours-title">Часы работы</span>
@@ -186,6 +195,7 @@
         font-size: 20px;
         font-weight: 500;
         font-family: var(--font-inter);
+        text-decoration: none;
 
     }
 }
