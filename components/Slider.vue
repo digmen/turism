@@ -4,13 +4,13 @@
     <swiper-slide v-for="(slide, index) in sliderData" :key="index">
       <div class="slider__item">
         <div class="slider__item-img">
-          <img :src="slide.image" :alt="slide.altText">
+          <img :src="slide.background_image" :alt="slide.altText">
         </div>
         <div class="slider__item-content">
           <h3 class="slider__item-title">
             {{ slide.title }}
           </h3>
-          <Button title="Подробнее" width="168px" :aria-label="slide.ariaLabel" @click="goToDetails(slide.id)" />
+          <Button title="Подробнее" width="168px" :aria-label="slide.ariaLabel" @click="goToDetails(slide.tour)" />
         </div>
       </div>
     </swiper-slide>
@@ -42,13 +42,12 @@ export default {
     const router = useRouter();
     const sliderStore = useSliderStore();
 
-    // Загружаем данные при монтировании компонента
     onMounted(() => {
       sliderStore.loadSlider();
     });
 
-    const goToDetails = (id) => {
-      router.push(`/discounttour/${id}`);
+    const goToDetails = (tour) => {
+      router.push(`/discounttour/${tour}`);
     };
 
     return {

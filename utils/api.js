@@ -175,3 +175,41 @@ export const fetchCatalogDiscountTours = async () => {
     }
 }
 
+export const fetchCountry = async () => {
+    try {
+        const response = await fetch(`${API_URL}/country/?language=en`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Ошибка при получение данных страны:', error);
+        throw error;
+    }
+}
+
+export const fetchFilter = async (countryId, tourTypeId) => {
+    try {
+        const response = await fetch(`${API_URL}/filter/?country_id=${countryId}&language=en&tour_type_id=${tourTypeId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Ошибка при получение данных фильтра:', error);
+        throw error;
+    }
+}
+

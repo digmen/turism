@@ -1,36 +1,38 @@
 <template>
     <header class="header" id="header">
         <div class="logo">
-            <img src="/assets/images/logo.png" alt="Логотип компании" />
+            <img src="/assets/images/logo.png" :alt="$t('header.logo')" />
         </div>
-        <nav class="nav__container" aria-label="Главная навигация">
+        <nav class="nav__container" aria-label="{{ $t('header.navigation') }}">
             <NuxtLink class="header__link" :class="{ 'active': route.path === '/' }" to="/"
-                aria-label="Главная страница">
-                Главная
+                aria-label="{{ $t('header.mainPage') }}">
+                {{ $t('header.home') }}
             </NuxtLink>
             <NuxtLink class="header__link" :class="{ 'active': route.path === '/employees' }" to="/employees"
-                aria-label="Страница сотрудников">
-                Сотрудники
+                aria-label="{{ $t('header.employeesPage') }}">
+                {{ $t('header.employees') }}
             </NuxtLink>
             <NuxtLink class="header__link" :class="{ 'active': route.path === '/about' }" to="/about"
-                aria-label="Информация о компании">
-                О компании
+                aria-label="{{ $t('header.aboutPage') }}">
+                {{ $t('header.about') }}
             </NuxtLink>
             <a class="header__link" href="#catalog">
-                Каталог туров
+                {{ $t('header.catalog') }}
             </a>
             <NuxtLink class="header__link" :class="{ 'active': route.path === '/hottours' }" to="/hottours"
-                aria-label="Горящие туры">
-                Горящие туры
+                aria-label="{{ $t('header.hottours') }}">
+                {{ $t('header.hottours') }}
             </NuxtLink>
             <NuxtLink class="header__link" :class="{ 'active': route.path === '/contacts' }" to="/contacts"
-                aria-label="Контактная информация">
-                Контакты
+                aria-label="{{ $t('header.contactsInfo') }}">
+                {{ $t('header.contacts') }}
             </NuxtLink>
         </nav>
         <div class="header__lang">
-            <button class="header__lang-btn" aria-label="Переключить на русский язык">Ru</button>
-            <button class="header__lang-btn" aria-label="Switch to English language">Eng</button>
+            <button class="header__lang-btn" :class="{ 'active': language === 'ru' }" @click="setLanguage('ru')"
+                aria-label="{{ $t('header.language') }}">Ru</button>
+            <button class="header__lang-btn" :class="{ 'active': language === 'en' }" @click="setLanguage('en')"
+                aria-label="{{ $t('header.language') }}">Eng</button>
         </div>
     </header>
     <div class="container">
@@ -38,10 +40,29 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { useRoute } from 'vue-router';
-
+import { ref, onMounted } from 'vue';
+import { useI18n } from "vue-i18n";
+const { setLocale } = useI18n()
+const { t } = useI18n();
 const route = useRoute();
+const language = ref('en');
+
+const setLanguage = (lang) => {
+    language.value = lang;
+    localStorage.setItem('language', lang);
+    setLocale(lang);
+};
+
+onMounted(() => {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage) {
+        language.value = savedLanguage;
+    } else {
+        language.value = 'en';
+    }
+});
 </script>
 
 <style scoped>
@@ -102,6 +123,40 @@ header nav {
 }
 
 .header__link.active::after {
+    transform: scaleX(1);
+}
+
+.header__lang {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header__lang-btn {
+    position: relative;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+
+.header__lang-btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.header__lang-btn.active::after {
     transform: scaleX(1);
 }
 

@@ -4,21 +4,17 @@
       <span>
         {{ selected }}
       </span>
-      <img src="@/assets/images/arrowSelect.svg" alt="Стрелка выбора" :class="{ open: open }" :style="{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }">
+      <img src="@/assets/images/arrowSelect.svg" alt="Стрелка выбора" :class="{ open: open }"
+        :style="{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }">
     </div>
     <div class="items" :class="{ selectHide: !open }" aria-label="Список опций">
-      <div
-        v-for="(option, i) of options"
-        :key="i"
-        @click="
-          selected = option;
-          open = false;
-          $emit('input', option);
-        "
-        aria-label="Опция выбора"
-      >
+      <div v-for="(option, i) of options" :key="i" @click="
+        selected = option.title || option.name;
+      open = false;
+      $emit('input', option);
+      " aria-label="Опция выбора">
         <span>
-          {{ option }}
+          {{ option.title || option.name }}
         </span>
       </div>
     </div>
@@ -53,8 +49,8 @@ export default {
       selected: this.default
         ? this.default
         : this.options.length > 0
-        ? this.options[0]
-        : null,
+          ? this.options[0]
+          : null,
       open: false,
     };
   },
@@ -132,9 +128,10 @@ export default {
 }
 
 @media (max-width: 1025px) {
-.selected span,
-.items span {
-  font-size: 15px;
-}
+
+  .selected span,
+  .items span {
+    font-size: 15px;
+  }
 }
 </style>
