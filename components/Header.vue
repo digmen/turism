@@ -4,27 +4,27 @@
             <img src="/assets/images/logo.png" :alt="$t('header.logo')" />
         </div>
         <nav class="nav__container" aria-label="{{ $t('header.navigation') }}">
-            <NuxtLink class="header__link" :class="{ 'active': route.path === '/' }" to="/"
+            <NuxtLink class="header__link" :class="{ 'active': route.path === localPath('/') }" :to="localPath('/')"
                 aria-label="{{ $t('header.mainPage') }}">
-                {{ $t('header.home') }}
+                {{ $t('home.title') }}
             </NuxtLink>
-            <NuxtLink class="header__link" :class="{ 'active': route.path === '/employees' }" to="/employees"
-                aria-label="{{ $t('header.employeesPage') }}">
+            <NuxtLink class="header__link" :class="{ 'active': route.path === localPath('/employees') }"
+                :to="localPath('/employees')" aria-label="{{ $t('header.employeesPage') }}">
                 {{ $t('header.employees') }}
             </NuxtLink>
-            <NuxtLink class="header__link" :class="{ 'active': route.path === '/about' }" to="/about"
-                aria-label="{{ $t('header.aboutPage') }}">
+            <NuxtLink class="header__link" :class="{ 'active': route.path === localPath('/about') }"
+                :to="localPath('/about')" aria-label="{{ $t('header.aboutPage') }}">
                 {{ $t('header.about') }}
             </NuxtLink>
             <a class="header__link" href="#catalog">
                 {{ $t('header.catalog') }}
             </a>
-            <NuxtLink class="header__link" :class="{ 'active': route.path === '/hottours' }" to="/hottours"
-                aria-label="{{ $t('header.hottours') }}">
+            <NuxtLink class="header__link" :class="{ 'active': route.path === localPath('/hottours') }"
+                :to="localPath('/hottours')" aria-label="{{ $t('header.hottours') }}">
                 {{ $t('header.hottours') }}
             </NuxtLink>
-            <NuxtLink class="header__link" :class="{ 'active': route.path === '/contacts' }" to="/contacts"
-                aria-label="{{ $t('header.contactsInfo') }}">
+            <NuxtLink class="header__link" :class="{ 'active': route.path === localPath('/contacts') }"
+                :to="localPath('/contacts')" aria-label="{{ $t('header.contactsInfo') }}">
                 {{ $t('header.contacts') }}
             </NuxtLink>
         </nav>
@@ -43,16 +43,15 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import { ref, onMounted } from 'vue';
-import { useI18n } from "vue-i18n";
 const { setLocale } = useI18n()
-const { t } = useI18n();
 const route = useRoute();
 const language = ref('en');
+const localPath = useLocalePath();
 
 const setLanguage = (lang) => {
     language.value = lang;
+    setLocale(language.value);
     localStorage.setItem('language', lang);
-    setLocale(lang);
 };
 
 onMounted(() => {

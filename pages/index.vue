@@ -2,25 +2,19 @@
     <div class="container">
         <Slider />
     </div>
-    <Filter />
+    <!-- <Filter /> -->
     <section class="about">
-        <img class="about__bg" src="/assets/images/aboutbg.svg" alt="Фон о нас">
+        <img class="about__bg" src="/assets/images/aboutbg.svg" :alt="$t('homeAbout.bg')">
         <article class="container">
             <div class="container">
                 <h1 class="about__title">
-                    Путешествуйте с комфортом и уверенностью!
+                    {{ $t('homeAbout.title') }}
                 </h1>
                 <article class="about__content">
                     <p class="about__text">
-                        Добро пожаловать в Awesome Travel – ваше надежное турагентство в Кыргызстане! Мы открываем для
-                        вас мир удивительных путешествий, предлагая туры на любой вкус: от спокойного семейного отдыха
-                        до экстремальных приключений. Наши опытные специалисты помогут вам выбрать идеальный маршрут,
-                        организовать трансфер и подобрать лучшие отели. Откройте для себя живописные горы, кристально
-                        чистые озера и богатую культуру Кыргызстана вместе с нами! Мы гарантируем комфорт, безопасность
-                        и незабываемые эмоции на каждом этапе вашего путешествия. С Awesome Travel мечты о путешествиях
-                        становятся реальностью!
+                        {{ $t('homeAbout.description') }}
                     </p>
-                    <img class="about__logo" src="/assets/images/logobgwhite.png" alt="Логотип Awesome Travel">
+                    <img class="about__logo" src="/assets/images/logobgwhite.png" :alt="$t('homeAbout.logo')">
                 </article>
             </div>
         </article>
@@ -28,37 +22,35 @@
     <Video />
     <section class="container">
         <article class="advantages">
-            <h2 class="advantages__title">Наши преимущества</h2>
+            <h2 class="advantages__title">{{ $t('homeAdvantages.title') }}</h2>
             <div class="advantages__content">
                 <div class="advantages__item">
                     <div class="advantages__item-img">
-                        <img src="/assets/images/add_location_alt.svg" alt="Разнообразная география туров">
+                        <img src="/assets/images/add_location_alt.svg" :alt="$t('homeAdvantages.alt1')">
                     </div>
-                    <h3>Туры с разнообразной географией</h3>
-                    <p>Мы организуем поездки в Кыргызстан, Казахстан, Узбекистан и другие страны Центральной Азии.</p>
+                    <h3>{{ $t('homeAdvantages.title1') }}</h3>
+                    <p>{{ $t('homeAdvantages.description1') }}</p>
                 </div>
                 <div class="advantages__item">
                     <div class="advantages__item-img">
-                        <img src="/assets/images/directions_bus.svg" alt="Оснащенный транспорт">
+                        <img src="/assets/images/directions_bus.svg" :alt="$t('homeAdvantages.alt2')">
                     </div>
-                    <h3>Хорошо оснащенный транспорт</h3>
-                    <p>Более 10 Mercedes Benz и более 10 внедорожников Jeep для экскурсий даже по самым сложным
-                        маршрутам.</p>
+                    <h3>{{ $t('homeAdvantages.title2') }}</h3>
+                    <p>{{ $t('homeAdvantages.description2') }}</p>
                 </div>
                 <div class="advantages__item">
                     <div class="advantages__item-img">
-                        <img src="/assets/images/groups.svg" alt="Профессиональные специалисты">
+                        <img src="/assets/images/groups.svg" :alt="$t('homeAdvantages.alt3')">
                     </div>
-                    <h3>Профессиональные специалисты</h3>
-                    <p>Наши гиды и водители владеют несколькими языками и имеют большой опыт проведения экскурсий.</p>
+                    <h3>{{ $t('homeAdvantages.title3') }}</h3>
+                    <p>{{ $t('homeAdvantages.description3') }}</p>
                 </div>
                 <div class="advantages__item">
                     <div class="advantages__item-img">
-                        <img src="/assets/images/hotel.svg" alt="Широкий выбор отелей">
+                        <img src="/assets/images/hotel.svg" :alt="$t('homeAdvantages.alt4')">
                     </div>
-                    <h3>Широкий выбор отелей</h3>
-                    <p>Мы сотрудничаем с более чем 60 отелями и гостевыми домами. Любой путешественник сможет найти
-                        условия для себя.</p>
+                    <h3>{{ $t('homeAdvantages.title4') }}</h3>
+                    <p>{{ $t('homeAdvantages.description4') }}</p>
                 </div>
             </div>
         </article>
@@ -67,13 +59,13 @@
     <section class="container">
         <article class="contact_block">
             <div class="contact_block__content">
-                <h2>Хотите узнать больше?</h2>
-                <p>Предоставим подробную информацию о наших услугах.</p>
+                <h2>{{ $t('homeBottom.title') }}</h2>
+                <p>{{ $t('homeBottom.description') }}</p>
             </div>
             <div class="contact_block__button">
                 <NuxtLink to="/contacts">
-                    Бесплатная консультация
-                    <img src="/assets/images/arrowRight.svg" alt="Стрелка вправо">
+                    {{ $t('homeBottom.button') }}
+                    <img src="/assets/images/arrowRight.svg" :alt="$t('homeBottom.buttonAlt')">
                 </NuxtLink>
             </div>
         </article>
@@ -81,8 +73,6 @@
 </template>
 
 <script>
-import Slider from '~/components/Slider.vue';
-import Video from '~/components/Video.vue';
 </script>
 
 <style scoped>

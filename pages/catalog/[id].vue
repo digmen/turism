@@ -1,30 +1,30 @@
 <template>
   <section class="container">
     <article class="catalog__path">
-      <NuxtLink to="/">Главная &nbsp;/</NuxtLink>
-      <span style="cursor: pointer;" @click="goBack">Каталог тура &nbsp;/&nbsp;</span>
+      <NuxtLink to="/">{{ $t('header.mainPage') }} &nbsp;/</NuxtLink>
+      <span style="cursor: pointer;" @click="goBack">{{ $t('header.catalog') }} &nbsp;/&nbsp;</span>
       <span v-if="tours.length > 0">{{ tours[0].tour_type }}</span>
     </article>
     <article class="catalog__title">
-      <h1>Каталог тура</h1>
+      <h1>{{ $t('catalogTour.title') }}</h1>
     </article>
     <article class="catalog__content">
-      <div v-if="loading" class="loading">Загрузка...</div>
+      <div v-if="loading" class="loading">{{ $t('catalogTour.loading') }}</div>
       <div v-else-if="error" class="error">{{ error }}</div>
-      <div v-else-if="tours.length === 0" class="no-data">Нет доступных туров</div>
+      <div v-else-if="tours.length === 0" class="no-data">{{ $t('catalogTour.noTours') }}</div>
       <div v-else v-for="tour in tours" :key="tour.id" class="catalog__content-item" @click="goToDetails(tour.id)">
         <img :src="tour.image" alt="Сотрудник" />
         <strong class="catalog__content-item-strong">{{ tour.title }}</strong>
         <div class="catalog__content-item-span-div">
-          <strong class="catalog__content-item-span-strong">Категория&nbsp;:&nbsp; </strong>
+          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.category') }}&nbsp;:&nbsp; </strong>
           <span class="catalog__content-item-span">{{ tour.tour_type }}</span>
         </div>
         <div class="catalog__content-item-span-div">
-          <strong class="catalog__content-item-span-strong">Продолжительность&nbsp;:&nbsp; </strong>
+          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.duration') }}&nbsp;:&nbsp; </strong>
           <span class="catalog__content-item-span">{{ tour.duration }}</span>
         </div>
         <div class="catalog__content-item-span-div">
-          <strong class="catalog__content-item-span-strong">Дата&nbsp;:&nbsp; </strong>
+          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.date') }}&nbsp;:&nbsp; </strong>
           <span class="catalog__content-item-span">{{ formatDate(tour.date_of_start) }}</span>
         </div>
         <div class="line"></div>
@@ -33,66 +33,52 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import { useDetailsCatalogToursStore } from '~/stores/catalogTours';
 import { computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-export default {
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-    const detailsCatalogToursStore = useDetailsCatalogToursStore();
+const route = useRoute();
+const router = useRouter();
+const detailsCatalogToursStore = useDetailsCatalogToursStore();
 
-    const formatDate = (dateString) => {
-      if (!dateString) return 'Не указана';
+const formatDate = (dateString) => {
+  if (!dateString) return 'Не указана';
 
-      const date = new Date(dateString);
-      const months = [
-        'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-        'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
-      ];
+  const date = new Date(dateString);
+  const months = [
+    'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+    'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+  ];
 
-      return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} года`;
-    };
-
-    watch(
-      () => route.params.id,
-      (id) => {
-        if (id) detailsCatalogToursStore.loadDetailsCatalogTours(id);
-      },
-      { immediate: true }
-    );
-
-    const goToDetails = (id) => {
-      router.push(`/tour/${id}`);
-    };
-
-    const goBack = () => {
-      router.back();
-    };
-
-    const tours = computed(() => {
-      return detailsCatalogToursStore.tours;
-    });
-    const loading = computed(() => {
-      return detailsCatalogToursStore.loading;
-    });
-    const error = computed(() => {
-      return detailsCatalogToursStore.error;
-    });
-
-
-    return {
-      tours,
-      loading,
-      error,
-      goToDetails,
-      formatDate,
-      goBack
-    };
-  },
+  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} года`;
 };
+
+watch(
+  () => route.params.id,
+  (id) => {
+    if (id) detailsCatalogToursStore.loadDetailsCatalogTours(id);
+  },
+  { immediate: true }
+);
+
+const goToDetails = (id) => {
+  router.push(`/tour/${id}`);
+};
+
+const goBack = () => {
+  router.back();
+};
+
+const tours = computed(() => {
+  return detailsCatalogToursStore.tours;
+});
+const loading = computed(() => {
+  return detailsCatalogToursStore.loading;
+});
+const error = computed(() => {
+  return detailsCatalogToursStore.error;
+});
 </script>
 
 <style scoped>
@@ -197,5 +183,4 @@ export default {
   margin-top: 15px;
   background-color: #2D2D2D;
 }
-
 </style>

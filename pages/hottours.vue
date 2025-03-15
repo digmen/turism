@@ -1,32 +1,32 @@
 <template>
     <section class="container">
         <article class="catalog__path">
-            <NuxtLink to="/">Главная &nbsp;/</NuxtLink>
-            <span>Горящие туры</span>
+            <NuxtLink to="/">{{ $t('hottours.home') }} &nbsp;/</NuxtLink>
+            <span>{{ $t('hottours.hottours') }}</span>
         </article>
         <article class="catalog__title">
-            <h1>Актуальные горящие туры</h1>
+            <h1>{{ $t('hottours.title') }}</h1>
         </article>
         <article class="catalog__content">
-            <div v-if="loading" class="loading">Загрузка...</div>
+            <div v-if="loading" class="loading">{{ $t('hottours.loading') }}</div>
             <div v-else-if="error" class="error">{{ error }}</div>
-            <div v-else-if="!discountTours.length" class="no-data">Нет доступных горящих туров</div>
+            <div v-else-if="!discountTours.length" class="no-data">{{ $t('hottours.noData') }}</div>
             <div v-else class="catalog__content-item" v-for="tour in discountTours" :key="tour.id"
                 @click="goToDetails(tour.id)">
                 <img :src="tour.image" alt="Туры" />
                 <strong class="catalog__content-item-strong">{{ tour.title }}</strong>
                 <div class="catalog__content-item-span-div">
-                    <strong class="catalog__content-item-span-strong">Категория&nbsp;:
+                    <strong class="catalog__content-item-span-strong">{{ $t('hottours.category') }}&nbsp;:
                         <span class="catalog__content-item-span">{{ tour.tour_type }}</span>
                     </strong>
                 </div>
                 <div class="catalog__content-item-span-div">
-                    <strong class="catalog__content-item-span-strong">Продолжительность&nbsp;:
+                    <strong class="catalog__content-item-span-strong">{{ $t('hottours.duration') }}&nbsp;:
                         <span class="catalog__content-item-span">{{ tour.duration }}</span>
                     </strong>
                 </div>
                 <div class="catalog__content-item-span-div">
-                    <strong class="catalog__content-item-span-strong">Дата&nbsp;:
+                    <strong class="catalog__content-item-span-strong">{{ $t('hottours.date') }}&nbsp;:
                         <span class="catalog__content-item-span">{{ formatDate(tour.date_of_start) }}</span>
                     </strong>
                 </div>
@@ -37,55 +37,37 @@
 </template>
 
 
-<script>
+<script setup>
 import { useCatalogDiscountTourStore } from '@/stores/catalogDiscountTour';
 import { onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 
-export default {
-    setup() {
-        const discountToursStore = useCatalogDiscountTourStore();
-        const router = useRouter();
+const discountToursStore = useCatalogDiscountTourStore();
+const router = useRouter();
 
-        onMounted(() => {
-            discountToursStore.loadDiscountTours();
-        });
+onMounted(() => {
+    discountToursStore.loadDiscountTours();
+});
 
-        const formatDate = (dateString) => {
-            if (!dateString) return 'Не указана';
+const formatDate = (dateString) => {
+    if (!dateString) return 'Не указана';
 
-            const date = new Date(dateString);
-            const months = [
-                'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-                'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
-            ];
+    const date = new Date(dateString);
+    const months = [
+        'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+        'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+    ];
 
-            return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} года`;
-        };
-
-        const goToDetails = (id) => {
-            router.push(`/discounttour/${id}`);
-        };
-
-        const discountTours = computed(() => {
-            return discountToursStore.discountTours;
-        });
-        const loading = computed(() => {
-            return discountToursStore.loading;
-        });
-        const error = computed(() => {
-            return discountToursStore.error;
-        });
-
-        return {
-            discountTours,
-            loading,
-            error,
-            goToDetails,
-            formatDate
-        };
-    },
+    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} года`;
 };
+
+const goToDetails = (id) => {
+    router.push(`/discounttour/${id}`);
+};
+
+const discountTours = computed(() => discountToursStore.discountTours);
+const loading = computed(() => discountToursStore.loading);
+const error = computed(() => discountToursStore.error);
 
 </script>
 

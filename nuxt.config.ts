@@ -5,19 +5,22 @@ export default defineNuxtConfig({
   pages: true,
   modules: ["@nuxtjs/i18n"],
   i18n: {
-    vueI18n: "./i18n.config.ts",
+    lazy: true,
+    defaultLocale: "en",
+    // baseUrl: "https://my-nuxt-app.com",
     locales: [
       {
         code: "en",
-        language: "en-US",
+        iso: "en",
+        name: "English",
+        file: "en.json",
       },
       {
         code: "ru",
-        language: "ru-RU",
+        iso: "ru",
+        name: "Russian",
+        file: "ru.json",
       },
     ],
-    defaultLocale: "en",
-    // baseUrl: "https://my-nuxt-app.com",
-    lazy: true,
   },
 });

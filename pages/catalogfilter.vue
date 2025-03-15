@@ -53,6 +53,7 @@ const tourName = ref('');
 const loading = computed(() => filterStore.loading);
 const error = computed(() => filterStore.error);
 const discountTours = computed(() => filterStore.filter);
+const localPath = useLocalePath();
 
 onMounted(() => {
     if (countryId.value && tourId.value) {
@@ -81,7 +82,7 @@ const formatDate = (dateString) => {
 };
 
 const goToDetails = (id) => {
-    router.push(`/tour/${id}`);
+    router.push(localPath(`/tour/${id}`));
 };
 </script>
 

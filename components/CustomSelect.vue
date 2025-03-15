@@ -1,18 +1,18 @@
 <template>
   <div class="custom-select" :tabindex="tabindex" @blur="open = false" :style="{ width: width + 'px' }">
-    <div class="selected" :class="{ open: open }" @click="open = !open" aria-label="Выбранный элемент">
+    <div class="selected" :class="{ open: open }" @click="open = !open" :aria-label="$t('customSelect.selected')">
       <span>
         {{ selected }}
       </span>
-      <img src="@/assets/images/arrowSelect.svg" alt="Стрелка выбора" :class="{ open: open }"
+      <img src="@/assets/images/arrowSelect.svg" :alt="$t('customSelect.arrow')" :class="{ open: open }"
         :style="{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }">
     </div>
-    <div class="items" :class="{ selectHide: !open }" aria-label="Список опций">
+    <div class="items" :class="{ selectHide: !open }" :aria-label="$t('customSelect.options')">
       <div v-for="(option, i) of options" :key="i" @click="
         selected = option.title || option.name;
       open = false;
       $emit('input', option);
-      " aria-label="Опция выбора">
+      " :aria-label="$t('customSelect.option')">
         <span>
           {{ option.title || option.name }}
         </span>
@@ -21,43 +21,43 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    options: {
-      type: Array,
-      required: true,
-    },
-    default: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    tabindex: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
-    width: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
+<script setup>
+import { ref, watch, onMounted } from 'vue';
+
+const props = defineProps({
+  options: {
+    type: Array,
+    required: true,
   },
-  data() {
-    return {
-      selected: this.default
-        ? this.default
-        : this.options.length > 0
-          ? this.options[0]
-          : null,
-      open: false,
-    };
+  default: {
+    type: String,
+    required: false,
+    default: null,
   },
-  mounted() {
-    this.$emit("input", this.selected);
+  tabindex: {
+    type: Number,
+    required: false,
+    default: 0,
   },
-};
+  width: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+});
+
+const selected = ref(props.default ? props.default : (props.options.length > 0 ? props.options[0] : null));
+const open = ref(false);
+
+onMounted(() => {
+  emit('input', selected.value);
+});
+
+const emit = defineEmits(['input']);
+
+watch(selected, (newValue) => {
+  emit('input', newValue);
+});
 </script>
 
 <style scoped>

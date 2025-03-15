@@ -10,14 +10,15 @@
           <h3 class="slider__item-title">
             {{ slide.title }}
           </h3>
-          <Button title="Подробнее" width="168px" :aria-label="slide.ariaLabel" @click="goToDetails(slide.tour)" />
+          <Button :title="$t('slider.btn')" width="168px" :aria-label="slide.ariaLabel"
+            @click="goToDetails(slide.tour)" />
         </div>
       </div>
     </swiper-slide>
   </swiper>
 </template>
 
-<script>
+<script setup>
 import { useRouter } from 'vue-router';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -32,37 +33,23 @@ import 'swiper/css/pagination';
 
 import Button from '~/ui/Button.vue';
 
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-    Button,
-  },
-  setup() {
-    const router = useRouter();
-    const sliderStore = useSliderStore();
+const router = useRouter();
+const sliderStore = useSliderStore();
 
-    onMounted(() => {
-      sliderStore.loadSlider();
-    });
+onMounted(() => {
+  sliderStore.loadSlider();
+});
 
-    const goToDetails = (tour) => {
-      router.push(`/discounttour/${tour}`);
-    };
-
-    return {
-      goToDetails,
-      sliderData: computed(() => sliderStore.slider),
-      loading: computed(() => sliderStore.loading),
-      error: computed(() => sliderStore.error),
-      modules: [
-        Navigation,
-        Pagination,
-        Autoplay,
-      ],
-    };
-  },
+const goToDetails = (tour) => {
+  router.push(`/discounttour/${tour}`);
 };
+
+const sliderData = computed(() => sliderStore.slider);
+const modules = [
+  Navigation,
+  Pagination,
+  Autoplay,
+];
 </script>
 
 <style scoped>

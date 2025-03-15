@@ -2,13 +2,14 @@
     <section class="container">
         <article class="video-container">
             <div class="video" @mouseenter="showControls" @mouseleave="hideControls">
-                <video ref="video" src="/assets/video/video.mp4" muted loop @play="isPlaying = true" @pause="isPlaying = false" title="Видео о путешествиях" aria-label="Видео о путешествиях"></video>
+                <video ref="video" src="/assets/video/video.mp4" muted loop @play="isPlaying = true"
+                    @pause="isPlaying = false" :title="$t('video.alt')" :aria-label="$t('video.alt')"></video>
                 <div class="controls" v-if="controlsVisible">
-                    <button v-if="!isPlaying" @click="playVideo" aria-label="Воспроизвести видео">
-                        <img src="/assets/images/play.svg" alt="Воспроизвести">
+                    <button v-if="!isPlaying" @click="playVideo" :aria-label="$t('video.playVideo')">
+                        <img src="/assets/images/play.svg" :alt="$t('video.play')">
                     </button>
-                    <button v-if="isPlaying" @click="stopVideo" aria-label="Остановить видео">
-                        <img src="/assets/images/stop.svg" alt="Пауза">
+                    <button v-if="isPlaying" @click="stopVideo" :aria-label="$t('video.pauseVideo')">
+                        <img src="/assets/images/stop.svg" :alt="$t('video.stop')">
                     </button>
                 </div>
             </div>
@@ -69,13 +70,13 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.video-container{
+.video-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.video{
+.video {
     margin-top: 56px;
     width: 931px;
     height: 475px;
@@ -84,7 +85,7 @@ onUnmounted(() => {
     overflow: hidden;
 }
 
-.video video{
+.video video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -123,9 +124,8 @@ onUnmounted(() => {
 }
 
 @media (max-width: 1025px) {
-    .video{
+    .video {
         margin-top: 125px;
     }
 }
-
 </style>

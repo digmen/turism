@@ -1,21 +1,20 @@
 <template>
     <section class="container">
         <nav class="catalog__path" aria-label="breadcrumb">
-            <NuxtLink to="/">Главная &nbsp;/</NuxtLink><span aria-current="page">Наши контакты</span>
+            <NuxtLink to="/">{{ $t('contacts.home') }} &nbsp;/</NuxtLink><span aria-current="page">
+                {{ $t('contacts.ourContacts') }}</span>
         </nav>
         <div class="contacts">
             <section class="contacts__form">
-                <h1>Оставь свои контакты и мы свяжемся с вами</h1>
-                <p>Путешествия открывают новые горизонты, и наша компания готова сделать ваш отдых незабываемым! Мы
-                    предлагаем уникальные туры, индивидуальный подход и поддержку на каждом этапе путешествия. Свяжитесь
-                    с нами, и мы воплотим ваши мечты о идеальном отпуске в реальность!</p>
+                <h1>{{ $t('contacts.title') }}</h1>
+                <p>{{ $t('contacts.description') }}</p>
                 <form @submit.prevent="submitForm">
-                    <input id="name" v-model="name" type="text" placeholder="Имя" required>
-                    <input id="email" v-model="email" type="email" placeholder="Почта" required>
-                    <input id="phone_number" v-model="phone_number" type="text" placeholder="Номер телефона с +"
+                    <input id="name" v-model="name" type="text" :placeholder="$t('contacts.name')" required>
+                    <input id="email" v-model="email" type="email" :placeholder="$t('contacts.email')" required>
+                    <input id="phone_number" v-model="phone_number" type="text" :placeholder="$t('contacts.phone')"
                         required>
-                    <textarea id="text" v-model="text" placeholder="Комментарий..." required />
-                    <Button title="Свяжитесь со мной" type="submit" width="270px" />
+                    <textarea id="text" v-model="text" :placeholder="$t('contacts.message')" required />
+                    <Button :title="$t('contacts.submit')" type="submit" width="270px" />
                 </form>
             </section>
             <aside class="contacts__img">

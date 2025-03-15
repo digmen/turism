@@ -1,0 +1,169 @@
+{
+  "header": {
+    "home": "Home",
+    "employees": "Employees",
+    "about": "About",
+    "catalog": "Tour Catalog",
+    "hottours": "Hot Tours",
+    "contacts": "Contacts",
+    "logo": "Company Logo",
+    "navigation": "Main Navigation",
+    "mainPage": "Main Page",
+    "employeesPage": "Employees Page",
+    "aboutPage": "About the Company",
+    "contactsInfo": "Contact Information",
+    "language": "Switch to Russian"
+  },
+  "home": {
+    "title": "Home",
+    "description": "Main Page"
+  },
+  "homeAbout": {
+    "title": "Travel with comfort and confidence!",
+    "description": "Welcome to Awesome Travel – your reliable travel agency in Kyrgyzstan! We open up a world of amazing travels for you, offering tours for every taste: from peaceful family vacations to extreme adventures. Our experienced specialists will help you choose the perfect route, organize transfers, and select the best hotels. Discover picturesque mountains, crystal-clear lakes, and the rich culture of Kyrgyzstan with us! We guarantee comfort, safety, and unforgettable emotions at every stage of your journey. With Awesome Travel, travel dreams become a reality!",
+    "logo": "Awesome Travel Logo",
+    "bg": "About Us Background"
+  },
+  "homeAdvantages": {
+    "title": "Our Advantages",
+    "title1": "Tours with diverse geography",
+    "title2": "Well-equipped transport",
+    "title3": "Professional specialists",
+    "title4": "Quality guarantee",
+    "description1": "We offer tours to the mountainous regions of Kyrgyzstan, where tourists can enjoy breathtaking views and get acquainted with the local culture and history.",
+    "description2": "More than 10 Mercedes Benz and more than 10 Jeep SUVs for excursions even on the most challenging routes.",
+    "description3": "Professional guides will tell you about the culture, history, and nature of Kyrgyzstan in an engaging and accessible way.",
+    "description4": "We always offer flexible prices, adapted to the needs and interests of our guests. Our rates depend on the type of tour, the number of participants, and the duration of the trip.",
+    "alt1": "Diverse tour geography",
+    "alt2": "Well-equipped transport",
+    "alt3": "Professional specialists",
+    "alt4": "Quality guarantee"
+  },
+  "homeBottom": {
+    "title": "Want to know more?",
+    "description": "We will provide detailed information about our services.",
+    "button": "Free Consultation",
+    "buttonAlt": "Right Arrow"
+  },
+  "catalogTour": {
+    "title": "Tour Catalog",
+    "loading": "Loading tours, please wait...",
+    "noTours": "No available tours",
+    "description": "Tour catalog page",
+    "tourImageAlt": "Tour image",
+    "arrowAlt": "Right Arrow"
+  },
+  "slider": {
+    "btn": "Learn More"
+  },
+  "filter": {
+    "title": "Find the tour that suits you best!",
+    "form": "Tour filter form",
+    "selectCountry": "Select destination",
+    "selectMonth": "Select month",
+    "selectTour": "Select tour",
+    "findTour": "Find tour",
+    "findTourButton": "Tour search button"
+  },
+  "customSelect": {
+    "selected": "Selected item",
+    "arrow": "Selection arrow",
+    "options": "Options list",
+    "option": "Selection option"
+  },
+  "video": {
+    "alt": "Travel video",
+    "playVideo": "Play video",
+    "play": "Play",
+    "pauseVideo": "Pause video",
+    "stop": "Pause"
+  },
+  "employees": {
+    "title": "Our Company Employees",
+    "loading": "Loading...",
+    "noData": "No employees",
+    "alt": "Employee photo",
+    "experience": "Work experience:",
+    "years": "years"
+  },
+  "about": {
+    "title": "About the Company",
+    "title2": "Dear partners!",
+    "strong2": "AWESOME TRAVEL",
+    "startDescription": "Tourist company",
+    "description2": " eagerly awaits your cooperation in organizing tours in Kyrgyzstan, Kazakhstan, Uzbekistan, and all of Central Asia. We provide a full range of services to foreign tourists, including transportation, accommodation in the best hotels and guesthouses, as well as exciting excursions to the picturesque regions of these countries.",
+    "title3": "About us:",
+    "description3": "  Awesome Travel started in 2021, and since then we have successfully organized tours for both small groups and large companies. We provide our clients with only the best conditions for comfortable living. Stay here and enjoy a safe journey. To date, we have conducted more than 100 tours, and our experience allows us to guarantee a high level of service and unforgettable travel experiences.",
+    "title4": "Tour descriptions",
+    "description4": "We offer tours to the mountainous regions of Kyrgyzstan, where tourists can enjoy breathtaking views and get acquainted with the local culture and history.",
+    "description5": "We organize trips to the famous Issyk-Kul - one of the largest resorts in the world.",
+    "description6": "Our routes cover not only natural attractions and locations but also cities with a rich historical heritage, such as Bishkek, Almaty, Tashkent, and others.",
+    "title5": "Visa services",
+    "li1": "We help tourists quickly and easily obtain visas for travel to Kyrgyzstan.",
+    "li2": "We provide consultations, fill out documents, and accompany you at all stages of the process.",
+    "li3": "With our support, you don't have to worry about bureaucratic details.",
+    "title6": "Transport services",
+    "li4": "We provide comfortable and reliable cars, minivans, and buses for any trips.",
+    "li5": "All cars undergo regular technical inspections, and the drivers have many years of experience.",
+    "li6": "By choosing us, you get safe and comfortable trips across the country.",
+    "title7": "Group tours",
+    "li7": "We organize interesting routes for small and large groups, where everyone will find something for themselves.",
+    "li8": "We include key attractions and active entertainment at affordable prices.",
+    "li9": "With us, you will not only discover Kyrgyzstan but also spend time in pleasant company.",
+    "title8": "Individual tours",
+    "li10": "We create personalized routes, taking into account your interests and wishes.",
+    "li11": "You choose where to go, what to see, and how much time to spend.",
+    "li12": "With our help, you will get a unique experience that is perfect for you.",
+    "title9": "Excursion services",
+    "li13": "Professional guides will tell you about the culture, history, and nature of Kyrgyzstan in an engaging and accessible way.",
+    "li14": "We show not only well-known attractions but also hidden gems.",
+    "li15": "By choosing us, you immerse yourself in the authentic atmosphere of the country.",
+    "title10": "Our prices",
+    "description10": "We always offer flexible prices, adapted to the needs and interests of our guests. Our rates depend on the type of tour, the number of participants, and the duration of the trip. For detailed information, price clarification, or cooperation organization, please contact us. We are always ready to discuss individual wishes and offer the best conditions for you.",
+    "button": "Leave your contacts"
+  },
+  "catalog": {
+    "title": "Tour Catalog",
+    "description": "Tour catalog page"
+  },
+  "hottours": {
+    "home": "Home",
+    "hottours": "Hot Tours",
+    "title": "Current Hot Tours",
+    "loading": "Loading...",
+    "noData": "No available hot tours",
+    "category": "Category",
+    "duration": "Duration",
+    "date": "Date"
+  },
+  "contacts": {
+    "home": "Home",
+    "ourContacts": "Our Contacts",
+    "title": "Leave your contacts and we will get in touch with you",
+    "description": "Travel opens new horizons, and our company is ready to make your vacation unforgettable! We offer a wide range of travel services, from individual tours to group trips. Our team of professionals will help you organize the perfect vacation, taking into account all your wishes and preferences.",
+    "phone": "Phone number with +",
+    "email": "Email",
+    "address": "Address",
+    "name": "Name",
+    "message": "Comment...",
+    "submit": "Contact me"
+  },
+  "deteilsRout": {
+    "main": "Home",
+    "catalog": "Tour Catalog",
+    "title": "Route Details",
+    "loading": "Loading...",
+    "noData": "No available routes",
+    "description": "Route details page",
+    "booking": "Book a tour",
+    "bookingButton": "Book tour button",
+    "category": "Category",
+    "duration": "Duration",
+    "difficulty": "Difficulty level",
+    "season": "Best season",
+    "groupSize": "Group size",
+    "recommendations": "Recommendations",
+    "day": "days",
+    "route": "Route"
+  }
+}

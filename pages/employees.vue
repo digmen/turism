@@ -1,49 +1,39 @@
 <template>
     <section class="container">
         <article class="employees">
-            <h1>Сотрудники нашей компании</h1>
+            <h1>{{ $t('employees.title') }}</h1>
         </article>
         <article>
-            <div v-if="loading" class="loading">Загрузка...</div>
+            <div v-if="loading" class="loading">{{ $t('employees.loading') }}</div>
             <div v-else-if="error" class="error">{{ error }}</div>
-            <div v-if="employees.length === 0 && !loading && !error" role="alert" class="no-data">Нет сотрудников</div>
+            <div v-if="employees.length === 0 && !loading && !error" role="alert" class="no-data">{{
+                $t('employees.noData') }}</div>
         </article>
         <article class="employees__content">
-            <div v-for="(employee, index) in employees" :key="employee.id" class="employees__content-item">
-                <img class="catalog-tour__item-image" :src="employee.photo" :alt="`Сотрудник: ${employee.name}`"
-                    loading="lazy" />
+            <div v-for="(employee) in employees" :key="employee.id" class="employees__content-item">
+                <img class="catalog-tour__item-image" :src="employee.photo"
+                    :alt="`${$t('employees.alt')}: ${employee.name}`" loading="lazy" />
                 <strong>{{ employee.name }}</strong>
                 <span>{{ employee.position }}</span>
-                <span>Опыт работы: {{ employee.experience }} лет</span>
+                <span>{{ $t('employees.experience') }} {{ employee.experience }} {{ $t('employees.years') }}</span>
             </div>
         </article>
     </section>
 </template>
 
-<script>
-import { useEmployeesStore } from '@/stores/employees';
+<script setup>
+import { useEmployeesStore } from '~/stores/employees';
 import { onMounted, computed } from 'vue';
 
-export default {
-    name: "Employees",
-    setup() {
-        const employeesStore = useEmployeesStore();
+const employeesStore = useEmployeesStore();
 
-        onMounted(() => {
-            employeesStore.loadEmployees();
-        });
+onMounted(() => {
+    employeesStore.loadEmployees();
+});
 
-        const employees = computed(() => employeesStore.employees);
-        const loading = computed(() => employeesStore.loading);
-        const error = computed(() => employeesStore.error);
-
-        return {
-            employees,
-            loading,
-            error,
-        };
-    },
-};
+const employees = computed(() => employeesStore.employees);
+const loading = computed(() => employeesStore.loading);
+const error = computed(() => employeesStore.error);
 </script>
 
 <style>

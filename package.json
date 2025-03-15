@@ -18,6 +18,7 @@
     "@nuxtjs/i18n": "^9.3.1",
     "pinia": "^3.0.1",
     "swiper": "^11.2.2",
+    "vue-i18n": "^11.1.2",
     "vue-router": "^4.5.0",
     "vue3-hot-toast": "^0.0.5"
   }

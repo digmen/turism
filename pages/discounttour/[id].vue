@@ -1,14 +1,14 @@
 <template>
     <section class="container">
         <article class="catalog__path">
-            <NuxtLink to="/">Главная &nbsp;/</NuxtLink>
-            <span style="cursor: pointer;" @click="goBack">Каталог тура &nbsp;/&nbsp;</span>
+            <NuxtLink :to="localPath('/')">{{ $t('deteilsRout.main') }} &nbsp;/</NuxtLink>
+            <span style="cursor: pointer;" @click="goBack">{{ $t('deteilsRout.catalog') }} &nbsp;/&nbsp;</span>
             <span v-if="tour.tour_type">{{ tour.tour_type }}</span>
         </article>
 
         <article class="tour-content">
-            <div v-if="loading">Загрузка...</div>
-            <div v-else-if="error">Ошибка: {{ error }}</div>
+            <div v-if="loading">{{ $t('deteilsRout.loading') }}</div>
+            <div v-else-if="error">{{ error }}</div>
             <div v-else-if="tour.title" class="tour-content">
                 <div class="tour-content__top">
                     <img :src="tour.background_image" :alt="tour.title">
@@ -19,20 +19,21 @@
                             <span class="tour-content__top-price">{{ tour.discount_price }}$</span>
                             <span class="tour-content__top-price-old">{{ tour.original_price }}$</span>
                         </div>
-                        <Button title="Забронировать" />
+                        <Button :title="$t('deteilsRout.booking')" :aria-label="$t('deteilsRout.bookingButton')" />
                     </div>
                 </div>
                 <div class="tour-details">
-                    <p><strong>Категория:</strong> {{ tour.tour_type }}</p>
-                    <p><strong>Продолжительность:</strong> {{ tour.duration }} дней</p>
-                    <p><strong>Уровень сложности:</strong> {{ tour.difficulty }}</p>
-                    <p><strong>Лучший сезон:</strong> {{ tour.season }}</p>
-                    <p><strong>Размер группы:</strong> {{ tour.group_size }}</p>
-                    <p><strong>Рекомендации:</strong> {{ tour.recommendations }}</p>
+                    <p><strong>{{ $t('deteilsRout.category') }}:</strong> {{ tour.tour_type }}</p>
+                    <p><strong>{{ $t('deteilsRout.duration') }}:</strong> {{ tour.duration }} {{ $t('deteilsRout.day')
+                        }}</p>
+                    <p><strong>{{ $t('deteilsRout.difficulty') }}:</strong> {{ tour.difficulty }}</p>
+                    <p><strong>{{ $t('deteilsRout.season') }}:</strong> {{ tour.season }}</p>
+                    <p><strong>{{ $t('deteilsRout.groupSize') }}:</strong> {{ tour.group_size }}</p>
+                    <p><strong>{{ $t('deteilsRout.recommendations') }}:</strong> {{ tour.recommendations }}</p>
                 </div>
             </div>
             <article class="tour-route">
-                <h2>Маршрут</h2>
+                <h2>{{ $t('deteilsRout.route') }}</h2>
                 <div v-for="item in route" :key="item.id">
                     <p>{{ item.name }}</p>
                 </div>
@@ -41,47 +42,39 @@
     </section>
 </template>
 
-<script>
+<script setup>
 import { useRoute, useRouter } from 'vue-router';
 import { computed, watch } from 'vue';
 import Button from '@/ui/Button.vue';
 import { useDiscountTourStore } from '~/stores/discountTour';
-export default {
-    components: {
-        Button
+
+const route = useRoute();
+const router = useRouter();
+const discountTourStore = useDiscountTourStore();
+const localPath = useLocalePath();
+
+watch(
+    () => route.params.id,
+    (id) => {
+        if (id) {
+            discountTourStore.loadTour(id);
+        }
     },
-    setup() {
-        const route = useRoute();
-        const router = useRouter();
-        const discountTourStore = useDiscountTourStore();
+    { immediate: true }
+);
 
-        watch(
-            () => route.params.id,
-            (id) => {
-                if (id) {
-                    discountTourStore.loadTour(id);
-                }
-            },
-            { immediate: true }
-        );
-
-        const goToDetails = (id) => {
-            router.push(`/tour/${id}`);
-        };
-
-        const goBack = () => {
-            router.back();
-        };
-
-        return {
-            tour: computed(() => discountTourStore.discountTour || {}),
-            loading: computed(() => discountTourStore.loading),
-            error: computed(() => discountTourStore.error),
-            goToDetails,
-            goBack,
-        };
-    },
+const goToDetails = (id) => {
+    router.push(localPath(`/tour/${id}`));
 };
+
+const goBack = () => {
+    router.push(localPath('/hottours'));
+};
+
+const tour = computed(() => discountTourStore.discountTour || {});
+const loading = computed(() => discountTourStore.loading);
+const error = computed(() => discountTourStore.error);
+
 </script>
 
 <style scoped>
