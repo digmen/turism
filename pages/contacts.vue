@@ -39,6 +39,55 @@ const email = ref('');
 const phone_number = ref('');
 const text = ref('');
 
+useHead({
+    title: 'Контакты - Awesome Travel / Contacts - Awesome Travel',
+    meta: [
+        {
+            name: 'description',
+            content: 'Свяжитесь с нами в Awesome Travel для получения дополнительной информации о наших турах и услугах. / Contact us at Awesome Travel for more information about our tours and services.'
+        },
+        {
+            name: 'keywords',
+            content: 'контакты, связь, туры, услуги, Awesome Travel, contacts, communication, tours, services'
+        },
+        {
+            property: 'og:title',
+            content: 'Контакты - Awesome Travel / Contacts - Awesome Travel'
+        },
+        {
+            property: 'og:description',
+            content: 'Свяжитесь с нами в Awesome Travel для получения дополнительной информации о наших турах и услугах. / Contact us at Awesome Travel for more information about our tours and services.'
+        },
+        {
+            property: 'og:image',
+            content: 'https://example.com/contacts-image.jpg'
+        },
+        {
+            property: 'og:url',
+            content: 'https://example.com/contacts'
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+        },
+        {
+            name: 'twitter:title',
+            content: 'Контакты - Awesome Travel / Contacts - Awesome Travel'
+        },
+        {
+            name: 'twitter:description',
+            content: 'Свяжитесь с нами в Awesome Travel для получения дополнительной информации о наших турах и услугах. / Contact us at Awesome Travel for more information about our tours and services.'
+        },
+        {
+            name: 'twitter:image',
+            content: 'https://example.com/contacts-image.jpg'
+        }
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://example.com/contacts' }
+    ]
+});
+
 const submitForm = async () => {
     const payload = {
         name: name.value,
@@ -46,7 +95,6 @@ const submitForm = async () => {
         phone_number: phone_number.value,
         text: text.value,
     };
-
 
     try {
         const response = await fetch(`${API_URL}/messages/`, {

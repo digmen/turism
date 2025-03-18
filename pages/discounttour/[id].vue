@@ -19,7 +19,8 @@
                             <span class="tour-content__top-price">{{ tour.discount_price }}$</span>
                             <span class="tour-content__top-price-old">{{ tour.original_price }}$</span>
                         </div>
-                        <Button :title="$t('deteilsRout.booking')" :aria-label="$t('deteilsRout.bookingButton')" />
+                        <Button :title="$t('deteilsRout.booking')" :aria-label="$t('deteilsRout.bookingButton')"
+                            @click="goContact" />
                     </div>
                 </div>
                 <div class="tour-details">
@@ -34,9 +35,9 @@
             </div>
             <article class="tour-route">
                 <h2>{{ $t('deteilsRout.route') }}</h2>
-                <div v-for="item in route" :key="item.id">
+                <!-- <div v-for="item in route" :key="item.id">
                     <p>{{ item.name }}</p>
-                </div>
+                </div> -->
             </article>
         </article>
     </section>
@@ -63,18 +64,61 @@ watch(
     { immediate: true }
 );
 
-const goToDetails = (id) => {
-    router.push(localPath(`/tour/${id}`));
-};
-
 const goBack = () => {
     router.push(localPath('/hottours'));
+};
+
+const goContact = () => {
+    router.push(localPath('/contacts'));
 };
 
 const tour = computed(() => discountTourStore.discountTour || {});
 const loading = computed(() => discountTourStore.loading);
 const error = computed(() => discountTourStore.error);
 
+useHead({
+    title: computed(() => tour.value.title ? `${tour.value.title} - Discount Tour` : 'Loading...'),
+    meta: [
+        {
+            name: 'description',
+            content: computed(() => tour.value.subtitle || 'Loading...')
+        },
+        {
+            name: 'og:title',
+            content: computed(() => tour.value.title || 'Loading...')
+        },
+        {
+            name: 'og:description',
+            content: computed(() => tour.value.subtitle || 'Loading...')
+        },
+        {
+            name: 'og:image',
+            content: computed(() => tour.value.background_image || '')
+        }
+    ]
+});
+
+useHead({
+    title: computed(() => tour.value.title ? `${tour.value.title} - Скидочный тур` : 'Загрузка...'),
+    meta: [
+        {
+            name: 'description',
+            content: computed(() => tour.value.subtitle || 'Загрузка...')
+        },
+        {
+            name: 'og:title',
+            content: computed(() => tour.value.title || 'Загрузка...')
+        },
+        {
+            name: 'og:description',
+            content: computed(() => tour.value.subtitle || 'Загрузка...')
+        },
+        {
+            name: 'og:image',
+            content: computed(() => tour.value.background_image || '')
+        }
+    ]
+});
 </script>
 
 <style scoped>

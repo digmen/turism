@@ -94,6 +94,55 @@
 <script setup>
 import Button from '~/ui/Button.vue';
 const localPath = useLocalePath();
+
+useHead({
+    title: 'О нас - Awesome Travel / About Us - Awesome Travel',
+    meta: [
+        {
+            name: 'description',
+            content: 'Узнайте больше о компании Awesome Travel и наших услугах. Мы предлагаем уникальные путешествия по Кыргызстану. / Learn more about Awesome Travel and our services. We offer unique journeys in Kyrgyzstan.'
+        },
+        {
+            name: 'keywords',
+            content: 'о нас, компания, услуги, путешествия, Кыргызстан, about us, company, services, travel, Kyrgyzstan'
+        },
+        {
+            property: 'og:title',
+            content: 'О нас - Awesome Travel / About Us - Awesome Travel'
+        },
+        {
+            property: 'og:description',
+            content: 'Узнайте больше о компании Awesome Travel и наших услугах. Мы предлагаем уникальные путешествия по Кыргызстану. / Learn more about Awesome Travel and our services. We offer unique journeys in Kyrgyzstan.'
+        },
+        {
+            property: 'og:image',
+            content: 'https://example.com/about-image.jpg'
+        },
+        {
+            property: 'og:url',
+            content: 'https://example.com/about'
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+        },
+        {
+            name: 'twitter:title',
+            content: 'О нас - Awesome Travel / About Us - Awesome Travel'
+        },
+        {
+            name: 'twitter:description',
+            content: 'Узнайте больше о компании Awesome Travel и наших услугах. Мы предлагаем уникальные путешествия по Кыргызстану. / Learn more about Awesome Travel and our services. We offer unique journeys in Kyrgyzstan.'
+        },
+        {
+            name: 'twitter:image',
+            content: 'https://example.com/about-image.jpg'
+        }
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://example.com/about' }
+    ]
+});
 </script>
 
 <style>

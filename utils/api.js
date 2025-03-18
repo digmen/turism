@@ -1,8 +1,20 @@
 import { API_URL } from "~/api/const";
 
+const switchLanguage = () => {
+    const language = localStorage.getItem('language');
+    if (language === 'en') {
+        return 'en';
+    } else if (language === 'ru') {
+        return 'ru';
+    } else {
+        return 'en';
+    }
+}
+
 export const fetchCatalogTours = async () => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/tour-types/?language=en`, {
+        const response = await fetch(`${API_URL}/tour-types/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,8 +32,9 @@ export const fetchCatalogTours = async () => {
 };
 
 export const fetchDetailsCatalogTours = async (id) => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/tour-types/${id}/tours/?language=en`, {
+        const response = await fetch(`${API_URL}/tour-types/${id}/tours/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,8 +53,9 @@ export const fetchDetailsCatalogTours = async (id) => {
 
 
 export const fetchTour = async (id) => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/tour/${id}/?language=en`, {
+        const response = await fetch(`${API_URL}/tour/${id}/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,8 +73,9 @@ export const fetchTour = async (id) => {
 };
 
 export const fetchEmployees = async () => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/employees/?language=en`, {
+        const response = await fetch(`${API_URL}/employees/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,8 +94,9 @@ export const fetchEmployees = async () => {
 
 
 export const fetchSlider = async () => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/discount-tours-slider/?language=en`, {
+        const response = await fetch(`${API_URL}/discount-tours-slider/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -98,8 +114,9 @@ export const fetchSlider = async () => {
 }
 
 export const fetchRoute = async (id) => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/tour/${id}/route/?language=en`, {
+        const response = await fetch(`${API_URL}/tour/${id}/route/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -117,8 +134,9 @@ export const fetchRoute = async (id) => {
 }
 
 export const fetchRouteStartEnd = async (id) => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/tour/${id}/start-end/?language=en`, {
+        const response = await fetch(`${API_URL}/tour/${id}/start-end/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -137,8 +155,9 @@ export const fetchRouteStartEnd = async (id) => {
 
 
 export const fetchDiscountTour = async (id) => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/discount-tour/${id}/?language=en`, {
+        const response = await fetch(`${API_URL}/discount-tour/${id}/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -157,8 +176,9 @@ export const fetchDiscountTour = async (id) => {
 
 
 export const fetchCatalogDiscountTours = async () => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/discount-tours/?language=en`, {
+        const response = await fetch(`${API_URL}/discount-tours/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -176,8 +196,9 @@ export const fetchCatalogDiscountTours = async () => {
 }
 
 export const fetchCountry = async () => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/country/?language=en`, {
+        const response = await fetch(`${API_URL}/country/?language=${language}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -195,8 +216,9 @@ export const fetchCountry = async () => {
 }
 
 export const fetchFilter = async (countryId, tourTypeId) => {
+    const language = switchLanguage()
     try {
-        const response = await fetch(`${API_URL}/filter/?country_id=${countryId}&language=en&tour_type_id=${tourTypeId}`, {
+        const response = await fetch(`${API_URL}/filter/?country_id=${countryId}&language=${language}&tour_type_id=${tourTypeId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

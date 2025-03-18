@@ -1,28 +1,28 @@
 <template>
     <section class="container">
         <article class="catalog__title">
-            <h1>Вы искали туры {{ countryName }} {{ tourName }}</h1>
+            <h1>{{ $t('catalog.searchTours') }} {{ countryName }} {{ tourName }}</h1>
         </article>
         <article class="catalog__content">
-            <div v-if="loading" class="loading">Загрузка...</div>
+            <div v-if="loading" class="loading">{{ $t('catalog.loading') }}</div>
             <div v-else-if="error" class="error">{{ error }}</div>
-            <div v-else-if="!discountTours.length" class="no-data">Нет доступных туров</div>
+            <div v-else-if="!discountTours.length" class="no-data">{{ $t('catalog.noTours') }}</div>
             <div v-else class="catalog__content-item" v-for="tour in discountTours" :key="tour.id"
                 @click="goToDetails(tour.id)">
                 <img :src="tour.image" alt="Туры" />
                 <strong class="catalog__content-item-strong">{{ tour.title }}</strong>
                 <div class="catalog__content-item-span-div">
-                    <strong class="catalog__content-item-span-strong">Категория&nbsp;:
+                    <strong class="catalog__content-item-span-strong">{{ $t('catalog.category') }}&nbsp;:
                         <span class="catalog__content-item-span">{{ tour.tour_type }}</span>
                     </strong>
                 </div>
                 <div class="catalog__content-item-span-div">
-                    <strong class="catalog__content-item-span-strong">Продолжительность&nbsp;:
+                    <strong class="catalog__content-item-span-strong">{{ $t('catalog.duration') }}&nbsp;:
                         <span class="catalog__content-item-span">{{ tour.duration }}</span>
                     </strong>
                 </div>
                 <div class="catalog__content-item-span-div">
-                    <strong class="catalog__content-item-span-strong">Дата&nbsp;:
+                    <strong class="catalog__content-item-span-strong">{{ $t('catalog.date') }}&nbsp;:
                         <span class="catalog__content-item-span">{{ formatDate(tour.date_of_start) }}</span>
                     </strong>
                 </div>
@@ -72,6 +72,14 @@ watchEffect(async () => {
 
     countryName.value = selectedCountry ? selectedCountry.name : 'Не найдено';
     tourName.value = selectedTour ? selectedTour.title : 'Не найдено';
+
+    useHead({
+        title: `${countryName.value} ${tourName.value} - Tours`,
+        meta: [
+            { name: 'description', content: `Find the best tours in ${countryName.value} including ${tourName.value}.` },
+            { name: 'description', content: `Найдите лучшие туры в ${countryName.value}, включая ${tourName.value}.` }
+        ]
+    });
 });
 
 const formatDate = (dateString) => {

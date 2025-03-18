@@ -2,17 +2,14 @@
   <div class="custom-select" :tabindex="tabindex" @blur="open = false" :style="{ width: width + 'px' }">
     <div class="selected" :class="{ open: open }" @click="open = !open" :aria-label="$t('customSelect.selected')">
       <span>
-        {{ selected }}
+        {{ displayValue }}
       </span>
       <img src="@/assets/images/arrowSelect.svg" :alt="$t('customSelect.arrow')" :class="{ open: open }"
         :style="{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }">
     </div>
     <div class="items" :class="{ selectHide: !open }" :aria-label="$t('customSelect.options')">
-      <div v-for="(option, i) of options" :key="i" @click="
-        selected = option.title || option.name;
-      open = false;
-      $emit('input', option);
-      " :aria-label="$t('customSelect.option')">
+      <div v-for="(option, i) of options" :key="i" @click="selectOption(option)"
+        :aria-label="$t('customSelect.option')">
         <span>
           {{ option.title || option.name }}
         </span>
@@ -22,7 +19,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, computed } from 'vue';
 
 const props = defineProps({
   options: {
@@ -46,18 +43,37 @@ const props = defineProps({
   },
 });
 
-const selected = ref(props.default ? props.default : (props.options.length > 0 ? props.options[0] : null));
-const open = ref(false);
-
-onMounted(() => {
-  emit('input', selected.value);
-});
-
 const emit = defineEmits(['input']);
 
-watch(selected, (newValue) => {
-  emit('input', newValue);
+const selectedOption = ref(null);
+const open = ref(false);
+
+// Вычисляемое свойство для отображения текста в селекте
+const displayValue = computed(() => {
+  if (selectedOption.value) {
+    return selectedOption.value.title || selectedOption.value.name;
+  }
+  return props.default;
 });
+
+// Функция выбора опции
+const selectOption = (option) => {
+  selectedOption.value = option;
+  open.value = false;
+  emit('input', option);
+};
+
+// Не эмитим событие при монтировании, чтобы не сбрасывать значения
+onMounted(() => {
+  // Ничего не делаем при монтировании
+});
+
+// Следим за изменениями опций, чтобы обновить выбранное значение при необходимости
+watch(() => props.options, (newOptions) => {
+  if (newOptions.length > 0 && !selectedOption.value) {
+    // Не выбираем автоматически первую опцию
+  }
+}, { deep: true });
 </script>
 
 <style scoped>

@@ -5,80 +5,82 @@
         <section class="footer__bottom">
             <article class="footer__bottom-top">
                 <div class="footer__bottom-top-left">
-                    <a href="#catalog" aria-label="Перейти к каталогу">
-                        <span>Каталог</span>
-                        <img src="/assets/images/arrowfooterleft.svg" alt="Стрелка вверх вправо">
+                    <a href="#catalog" :aria-label="$t('footer.goToCatalog')">
+                        <span>{{ $t('footer.catalog') }}</span>
+                        <img src="/assets/images/arrowfooterleft.svg" :alt="$t('footer.arrowUp')">
                     </a>
                 </div>
                 <div class="footer__bottom-top-right">
                     <a href="#header" aria-label="Вернуться к началу страницы">
-                        <img src="/assets/images/arrowup.svg" alt="Стрелка вверх">
+                        <img src="/assets/images/arrowup.svg" :alt="$t('footer.arrowUp')">
                     </a>
                 </div>
             </article>
             <article class="footer__bottom-bottom">
                 <article class="footer__bottom-bottom-left">
                     <div class="footer__links">
-                        <NuxtLink class="footer__link" to="/" aria-label="Перейти на главную страницу">
-                            Главная&nbsp;&nbsp;/&nbsp;&nbsp;
+                        <NuxtLink class="footer__link" to="/" :aria-label="$t('footer.goToMain')">
+                            {{ $t('footer.main') }}&nbsp;&nbsp;/&nbsp;&nbsp;
                         </NuxtLink>
-                        <NuxtLink class="footer__link" to="/" aria-label="Перейти к каталогу туров">
-                            Каталог туров&nbsp;&nbsp;/&nbsp;&nbsp;
+                        <NuxtLink class="footer__link" to="/" :aria-label="$t('footer.goToCatalogTours')">
+                            {{ $t('footer.catalog') }}&nbsp;&nbsp;/&nbsp;&nbsp;
                         </NuxtLink>
-                        <NuxtLink class="footer__link" to="/hottours" aria-label="Перейти к горящим турам">
-                            Горящие туры&nbsp;&nbsp;/&nbsp;&nbsp;
+                        <NuxtLink class="footer__link" to="/hottours" :aria-label="$t('footer.goToHottours')">
+                            {{ $t('footer.hottours') }}&nbsp;&nbsp;/&nbsp;&nbsp;
                         </NuxtLink>
                         <br />
-                        <NuxtLink class="footer__link" to="/employees" aria-label="Перейти к сотрудникам">
-                            Сотрудники
+                        <NuxtLink class="footer__link" to="/employees" :aria-label="$t('footer.goToEmployees')">
+                            {{ $t('footer.employees') }}
                         </NuxtLink>
                     </div>
                     <div class="footer__socials">
                         <a class="footer__social-link" href="https://t.me/awesometravelkg"
-                            aria-label="Перейти в Telegram">
-                            <img class="footer__social-icon" src="/assets/images/telegram.svg" alt="Telegram">
+                            :aria-label="$t('footer.goToTelegram')">
+                            <img class="footer__social-icon" src="/assets/images/telegram.svg"
+                                :alt="$t('footer.telegram')">
                         </a>
                         <a class="footer__social-link" href="https://wa.me/996707498308"
-                            aria-label="Перейти в WhatsApp">
-                            <img class="footer__social-icon" src="/assets/images/whatsapp.svg" alt="WhatsApp">
+                            :aria-label="$t('footer.goToWhatsapp')">
+                            <img class="footer__social-icon" src="/assets/images/whatsapp.svg"
+                                :alt="$t('footer.whatsapp')">
                         </a>
                         <a class="footer__social-link"
                             href="https://www.instagram.com/awesome_travel_kg_?igsh=YW9iYTh2cGp0ZXJl&utm_source=qr"
-                            aria-label="Перейти в Instagram">
-                            <img class="footer__social-icon" src="/assets/images/instagram.svg" alt="Instagram">
+                            :aria-label="$t('footer.goToInstagram')">
+                            <img class="footer__social-icon" src="/assets/images/instagram.svg"
+                                :alt="$t('footer.instagram')">
                         </a>
                     </div>
                 </article>
                 <article class="footer__bottom-bottom-left">
                     <div class="footer__contacts">
-                        <span class="footer__contact-title">Наши контакты</span>
-                        <a class="footer__contact-link" aria-label="Позвонить по телефону +996 707 498 308"
-                            href="tel:+996707498308">
-                            +996 707 498 308
+                        <span class="footer__contact-title">{{ $t('footer.ourContacts') }}</span>
+                        <a class="footer__contact-link" :aria-label="$t('footer.phone')" href="tel:+996707498308">
+                            {{ $t('footer.phone') }}
                         </a>
                     </div>
                     <div class="footer__email">
-                        <span class="footer__email-title">Email</span>
+                        <span class="footer__email-title">{{ $t('footer.email') }}</span>
                         <a href="mailto:awesometravelkg@gmail.com" class="footer__email-link"
-                            aria-label="Отправить письмо на awesometravelkg@gmail.com">
+                            :aria-label="$t('footer.emailLink')">
                             awesometravelkg@gmail.com
                         </a>
                     </div>
                 </article>
                 <article class="footer__bottom-bottom-left">
                     <div class="footer__address">
-                        <span class="footer__address-title">Адрес</span>
+                        <span class="footer__address-title">{{ $t('footer.address') }}</span>
                         <a class="footer__address-detail" href="https://maps.app.goo.gl/xMrbRfziHfjJGvFu5"
-                            target="_blank" rel="noopener noreferrer">г. Бишкек, ул. Фрунзе 113</a>
+                            target="_blank" rel="noopener noreferrer">{{ $t('footer.addressDetail') }}</a>
                     </div>
                     <div class="footer__hours">
-                        <span class="footer__hours-title">Часы работы</span>
-                        <span class="footer__hours-detail">Круглосуточно</span>
+                        <span class="footer__hours-title">{{ $t('footer.hours') }}</span>
+                        <span class="footer__hours-detail">{{ $t('footer.hoursDetail') }}</span>
                     </div>
                 </article>
                 <article class="footer__bottom-bottom-right">
                     <div class="footer__copyright">
-                        <span class="footer__copyright-text">© 2023 — Copyright</span>
+                        <span class="footer__copyright-text">{{ $t('footer.copyright') }}</span>
                     </div>
                 </article>
             </article>
@@ -88,6 +90,35 @@
 
 <script setup>
 
+useHead({
+    title: 'Awesome Travel',
+    meta: [
+        {
+            name: 'description',
+            content: 'Awesome Travel'
+        },
+        {
+            name: 'keywords',
+            content: 'Awesome Travel'
+        },
+        {
+            property: 'og:title',
+            content: 'Awesome Travel'
+        },
+        {
+            property: 'og:description',
+            content: 'Awesome Travel'
+        },
+        {
+            property: 'og:image',
+            content: 'https://example.com/footer-thumbnail.jpg'
+        },
+        {
+            property: 'og:url',
+            content: 'https://example.com/footer'
+        }
+    ]
+});
 </script>
 
 <style>

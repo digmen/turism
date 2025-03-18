@@ -46,6 +46,14 @@ const getCardClass = (index) => {
 const tours = computed(() => toursStore.tours);
 const loading = computed(() => toursStore.loading);
 const error = computed(() => toursStore.error);
+
+useHead({
+  title: 'Catalog Tour - Каталог Туров',
+  meta: [
+    { name: 'description', content: 'Explore our catalog of tours. Изучите наш каталог туров.' },
+    { name: 'keywords', content: 'tours, travel, catalog, туры, путешествия, каталог' },
+  ],
+});
 </script>
 
 <style scoped>

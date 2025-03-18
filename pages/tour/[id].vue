@@ -1,14 +1,14 @@
 <template>
     <section class="container">
         <article class="catalog__path">
-            <NuxtLink to="/">Главная &nbsp;/</NuxtLink>
-            <span style="cursor: pointer;" @click="goBack">Каталог тура &nbsp;/&nbsp;</span>
+            <NuxtLink :to="localPath('/')">{{ $t('deteilsRout.main') }} &nbsp;/</NuxtLink>
+            <span style="cursor: pointer;" @click="goBack">{{ $t('deteilsRout.catalog') }} &nbsp;/&nbsp;</span>
             <span v-if="tour.tour_type">{{ tour.tour_type }}</span>
         </article>
 
         <article class="tour-content">
-            <div v-if="loading">Загрузка...</div>
-            <div v-else-if="error">Ошибка: {{ error }}</div>
+            <div v-if="loading">{{ $t('deteilsRout.loading') }}</div>
+            <div v-else-if="error">{{ $t('deteilsRout.error') }}: {{ error }}</div>
             <div v-else-if="tour.title" class="tour-content">
                 <div class="tour-content__top">
                     <img :src="tour.background_image" :alt="tour.title">
@@ -16,16 +16,18 @@
                         <h1>{{ tour.title }}</h1>
                         <p>{{ tour.subtitle }}</p>
                         <p class="tour-content__top-price">{{ tour.price }}$</p>
-                        <Button title="Забронировать" />
+                        <Button :title="$t('deteilsRout.booking')" :aria-label="$t('deteilsRout.bookingButton')"
+                            @click="goContact" />
                     </div>
                 </div>
                 <div class="tour-details">
-                    <p><strong>Категория:</strong> {{ tour.tour_type }}</p>
-                    <p><strong>Продолжительность:</strong> {{ tour.duration }} дней</p>
-                    <p><strong>Уровень сложности:</strong> {{ tour.difficulty }}</p>
-                    <p><strong>Лучший сезон:</strong> {{ tour.season }}</p>
-                    <p><strong>Размер группы:</strong> {{ tour.group_size }}</p>
-                    <p><strong>Рекомендации:</strong> {{ tour.recommendations }}</p>
+                    <p><strong>{{ $t('deteilsRout.category') }}:</strong> {{ tour.tour_type }}</p>
+                    <p><strong>{{ $t('deteilsRout.duration') }}:</strong> {{ tour.duration }}
+                        {{ $t('deteilsRout.day') }}</p>
+                    <p><strong>{{ $t('deteilsRout.difficulty') }}:</strong> {{ tour.difficulty }}</p>
+                    <p><strong>{{ $t('deteilsRout.season') }}:</strong> {{ tour.season }}</p>
+                    <p><strong>{{ $t('deteilsRout.groupSize') }}:</strong> {{ tour.group_size }}</p>
+                    <p><strong>{{ $t('deteilsRout.recommendations') }}:</strong> {{ tour.recommendations }}</p>
                 </div>
             </div>
             <article class="tour-route">
@@ -73,58 +75,83 @@
     </section>
 </template>
 
-<script>
+<script setup>
 import { useRoute, useRouter } from 'vue-router';
 import { useTourStore } from '@/stores/tour';
 import { computed, watch } from 'vue';
 import Button from '@/ui/Button.vue';
 import { useRouteStore, useRouteStartEndStore } from '~/stores/route';
-export default {
-    components: {
-        Button
+const localPath = useLocalePath();
+
+const route = useRoute();
+const router = useRouter();
+const tourStore = useTourStore();
+const routeStore = useRouteStore();
+const routeStartEndStore = useRouteStartEndStore();
+
+watch(
+    () => route.params.id,
+    (id) => {
+        if (id) {
+            tourStore.loadTour(id);
+            routeStore.loadRoute(id);
+            routeStartEndStore.loadRouteStartEnd(id);
+        }
     },
-    setup() {
-        const route = useRoute();
-        const router = useRouter();
-        const tourStore = useTourStore();
-        const routeStore = useRouteStore();
-        const routeStartEndStore = useRouteStartEndStore();
+    { immediate: true }
+);
 
-        watch(
-            () => route.params.id,
-            (id) => {
-                if (id) {
-                    tourStore.loadTour(id);
-                    routeStore.loadRoute(id);
-                    routeStartEndStore.loadRouteStartEnd(id);
-                }
-            },
-            { immediate: true }
-        );
-
-        const goToDetails = (id) => {
-            router.push(`/tour/${id}`);
-        };
-
-        const goBack = () => {
-            router.back();
-        };
-
-        return {
-            tour: computed(() => tourStore.tour || {}),
-            loading: computed(() => tourStore.loading),
-            error: computed(() => tourStore.error),
-            route: computed(() => routeStore.route || {}),
-            loadingRoute: computed(() => routeStore.loading),
-            errorRoute: computed(() => routeStore.error),
-            routeStartEnd: computed(() => routeStartEndStore.routeStartEnd || {}),
-            loadingRouteStartEnd: computed(() => routeStartEndStore.loading),
-            errorRouteStartEnd: computed(() => routeStartEndStore.error),
-            goToDetails,
-            goBack,
-        };
-    },
+const goBack = () => {
+    router.back();
 };
+
+const goContact = () => {
+    router.push(localPath('/contacts'));
+};
+
+const tour = computed(() => tourStore.tour || {});
+const loading = computed(() => tourStore.loading);
+const error = computed(() => tourStore.error);
+const routeData = computed(() => routeStore.route || {});
+const loadingRoute = computed(() => routeStore.loading);
+const errorRoute = computed(() => routeStore.error);
+const routeStartEnd = computed(() => routeStartEndStore.routeStartEnd || {});
+const loadingRouteStartEnd = computed(() => routeStartEndStore.loading);
+const errorRouteStartEnd = computed(() => routeStartEndStore.error);
+
+useHead({
+    title: computed(() => tour.value.title ? `${tour.value.title} - Tour Details` : 'Tour Details'),
+    meta: [
+        {
+            name: 'description',
+            content: computed(() => tour.value.subtitle || 'Tour details and information')
+        },
+        {
+            name: 'og:title',
+            content: computed(() => tour.value.title || 'Tour Details')
+        },
+        {
+            name: 'og:description',
+            content: computed(() => tour.value.subtitle || 'Tour details and information')
+        },
+        {
+            name: 'og:image',
+            content: computed(() => tour.value.background_image || '')
+        },
+        {
+            name: 'og:title',
+            content: computed(() => tour.value.title ? `${tour.value.title} - Детали тура` : 'Детали тура')
+        },
+        {
+            name: 'og:description',
+            content: computed(() => tour.value.subtitle || 'Детали тура и информация')
+        },
+        {
+            name: 'og:image',
+            content: computed(() => tour.value.background_image || '')
+        }
+    ]
+});
 </script>
 
 <style scoped>

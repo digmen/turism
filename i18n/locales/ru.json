@@ -124,7 +124,13 @@
   },
   "catalog": {
     "title": "Каталог туров",
-    "description": "Страница каталога туров"
+    "description": "Страница каталога туров",
+    "searchTours": "Вы искали туры",
+    "loading": "Загрузка...",
+    "noTours": "Нет доступных туров",
+    "category": "Категория",
+    "duration": "Продолжительность",
+    "date": "Дата"
   },
   "hottours": {
     "home": "Главная",
@@ -148,14 +154,14 @@
     "message": "Комментарий...",
     "submit": "Свяжитесь со мной"
   },
-  "deteilsRout":{
+  "deteilsRout": {
     "main": "Главная",
     "catalog": "Каталог туров",
     "title": "Детали маршрута",
     "loading": "Загрузка...",
     "noData": "Нет доступных маршрутов",
     "description": "Страница деталей маршрута",
-    "booking": "Забронировать тур",
+    "booking": "Забронировать",
     "bookingButton": "Кнопка забронировать тур",
     "category": "Категория",
     "duration": "Продолжительность",
@@ -165,5 +171,33 @@
     "recommendations": "Рекомендации",
     "day": "дней",
     "route": "Маршрут"
+  },
+  "footer": {
+    "catalog": "Каталог",
+    "hottours": "Горящие туры",
+    "employees": "Сотрудники",
+    "main": "Главная",
+    "contacts": "Контакты",
+    "goToCatalog": "Перейти к каталогу",
+    "arrowUp": "Стрелка вверх вправо",
+    "goToMain": "Перейти на главную страницу",
+    "goToCatalogTours": "Перейти к каталогу туров",
+    "goToHottours": "Перейти к горящим турам",
+    "goToEmployees": "Перейти к сотрудникам",
+    "goToTelegram": "Перейти в Telegram",
+    "goToWhatsapp": "Перейти в WhatsApp",
+    "goToInstagram": "Перейти в Instagram",
+    "telegram": "Telegram",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "ourContacts": "Наши контакты",
+    "phone": "Позвонить по телефону +996 707 498 308",
+    "email": "Почта",
+    "emailLink": "Отправить письмо на электронную почту",
+    "address": "Адрес",
+    "addressDetail": "г. Бишкек, ул. Фрунзе 113",
+    "hours": "Часы работы",
+    "hoursDetail": "Круглосуточно",
+    "copyright": "© 2023 — Copyright"
   }
 }

@@ -2,7 +2,7 @@
     <div class="container">
         <Slider />
     </div>
-    <!-- <Filter /> -->
+    <Filter />
     <section class="about">
         <img class="about__bg" src="/assets/images/aboutbg.svg" :alt="$t('homeAbout.bg')">
         <article class="container">
@@ -72,7 +72,55 @@
     </section>
 </template>
 
-<script>
+<script setup>
+useHead({
+    title: 'Awesome Travel - Главная страница / Main Page',
+    meta: [
+        {
+            name: 'description',
+            content: 'Добро пожаловать на главную страницу Awesome Travel! Откройте для себя удивительные путешествия по Кыргызстану с нашим надежным туристическим агентством. Мы предлагаем туры на любой вкус: от спокойного семейного отдыха до экстремальных приключений. / Welcome to the main page of Awesome Travel! Discover amazing journeys in Kyrgyzstan with our reliable travel agency. We offer tours for every taste: from peaceful family vacations to extreme adventures.'
+        },
+        {
+            name: 'keywords',
+            content: 'туризм, путешествия, Кыргызстан, туры, отдых, приключения, семейный отдых, экстремальные туры, туристическое агентство / tourism, travel, Kyrgyzstan, tours, vacation, adventures, family vacation, extreme tours, travel agency'
+        },
+        {
+            property: 'og:title',
+            content: 'Awesome Travel - Главная страница / Main Page'
+        },
+        {
+            property: 'og:description',
+            content: 'Добро пожаловать на главную страницу Awesome Travel! Откройте для себя удивительные путешествия по Кыргызстану с нашим надежным туристическим агентством. Мы предлагаем туры на любой вкус: от спокойного семейного отдыха до экстремальных приключений. / Welcome to the main page of Awesome Travel! Discover amazing journeys in Kyrgyzstan with our reliable travel agency. We offer tours for every taste: from peaceful family vacations to extreme adventures.'
+        },
+        {
+            property: 'og:image',
+            content: 'https://example.com/image.jpg'
+        },
+        {
+            property: 'og:url',
+            content: 'https://example.com/current-page'
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+        },
+        {
+            name: 'twitter:title',
+            content: 'Awesome Travel - Главная страница / Main Page'
+        },
+        {
+            name: 'twitter:description',
+            content: 'Добро пожаловать на главную страницу Awesome Travel! Откройте для себя удивительные путешествия по Кыргызстану с нашим надежным туристическим агентством. Мы предлагаем туры на любой вкус: от спокойного семейного отдыха до экстремальных приключений. / Welcome to the main page of Awesome Travel! Discover amazing journeys in Kyrgyzstan with our reliable travel agency. We offer tours for every taste: from peaceful family vacations to extreme adventures.'
+        },
+        {
+            name: 'twitter:image',
+            content: 'https://example.com/image.jpg'
+        }
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://example.com/current-page' }
+    ]
+})
 </script>
 
 <style scoped>

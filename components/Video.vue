@@ -67,6 +67,52 @@ onMounted(() => {
 onUnmounted(() => {
     document.removeEventListener('visibilitychange', handleVisibilityChange);
 });
+
+useHead({
+    title: 'Видео - Awesome Travel / Video - Awesome Travel',
+    meta: [
+        {
+            name: 'description',
+            content: 'Просмотрите наше видео, чтобы узнать больше о наших турах и услугах. / Watch our video to learn more about our tours and services.'
+        },
+        {
+            name: 'keywords',
+            content: 'видео, туры, путешествия, видео туры, video, tours, travel, video tours'
+        },
+        {
+            property: 'og:title',
+            content: 'Видео - Awesome Travel / Video - Awesome Travel'
+        },
+        {
+            property: 'og:description',
+            content: 'Просмотрите наше видео, чтобы узнать больше о наших турах и услугах. / Watch our video to learn more about our tours and services.'
+        },
+        {
+            property: 'og:image',
+            content: 'https://example.com/video-thumbnail.jpg'
+        },
+        {
+            property: 'og:url',
+            content: 'https://example.com/video'
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+        },
+        {
+            name: 'twitter:title',
+            content: 'Видео - Awesome Travel / Video - Awesome Travel'
+        },
+        {
+            name: 'twitter:description',
+            content: 'Просмотрите наше видео, чтобы узнать больше о наших турах и услугах. / Watch our video to learn more about our tours and services.'
+        },
+        {
+            name: 'twitter:image',
+            content: 'https://example.com/video-thumbnail.jpg'
+        }
+    ]
+});
 </script>
 
 <style scoped>

@@ -6,55 +6,63 @@
         <form class="filter__form" :aria-label="$t('filter.form')" @submit.prevent="submitFilter">
             <CustomSelect :options="country.map(item => ({ name: item.name, id: item.id }))"
                 :default="$t('filter.selectCountry')" class="select" @input="handleInputCountry" :width="300"
-                :aria-label="$t('filter.selectCountry')" />
+                :aria-label="$t('filter.selectCountry')" :key="'country-' + selectedCountryKey" />
             <CustomSelect :options="months.map(month => ({ name: month }))" :default="$t('filter.selectMonth')"
                 class="select" :width="230" :aria-label="$t('filter.selectMonth')" />
             <CustomSelect :options="tours.map(item => ({ title: item.title, id: item.id }))"
                 :default="$t('filter.selectTour')" class="select" @input="handleInputTour" :width="300"
-                :aria-label="$t('filter.selectTour')" />
+                :aria-label="$t('filter.selectTour')" :key="'tour-' + selectedTourKey" />
             <Button :title="$t('filter.findTour')" :aria-label="$t('filter.findTourButton')" size="15px" />
         </form>
     </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import CustomSelect from "./CustomSelect.vue";
 import Button from '@/ui/Button.vue';
 import { useCountryStore } from '@/stores/country';
 import { useToursStore } from "~/stores/catalogTours";
 
+const { locale } = useI18n();
 const router = useRouter();
 const countryStore = useCountryStore();
 const toursStore = useToursStore();
 const selectedCountry = ref(null);
 const selectedTour = ref(null);
+const selectedCountryKey = ref(0);
+const selectedTourKey = ref(0);
 const localPath = useLocalePath();
 
-const months = ref([
-    'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-    'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
-]);
-
-const locale = ref(localStorage.getItem('locale'));
-
-watch(locale, (newLocale) => {
-    months.value = newLocale === 'ru'
-        ? ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-        : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-});
-
 onMounted(() => {
+    const storedLang = localStorage.getItem('locale');
+    if (storedLang) {
+        locale.value = storedLang;
+    }
     countryStore.loadCountry();
 });
 
+const months = computed(() => locale.value === 'ru'
+    ? ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+    : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+);
+
 const handleInputCountry = (selectedOption) => {
-    selectedCountry.value = selectedOption.id;
+    console.log('Selected Country:', selectedOption);
+    if (selectedOption && selectedOption.id) {
+        selectedCountry.value = selectedOption.id;
+        selectedCountryKey.value++; // Обновляем ключ для предотвращения сброса
+    }
 };
 
 const handleInputTour = (selectedOption) => {
-    selectedTour.value = selectedOption.id;
+    console.log('Selected Tour:', selectedOption);
+    if (selectedOption && selectedOption.id) {
+        selectedTour.value = selectedOption.id;
+        selectedTourKey.value++; // Обновляем ключ для предотвращения сброса
+    }
 };
 
 const submitFilter = () => {
@@ -64,9 +72,9 @@ const submitFilter = () => {
 };
 
 const country = computed(() => countryStore.country.map(item => ({ id: item.id, name: item.name })) || []);
-
 const tours = computed(() => toursStore.tours.map(item => ({ id: item.id, title: item.title })) || []);
 </script>
+
 
 
 <style scoped>

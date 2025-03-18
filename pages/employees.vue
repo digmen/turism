@@ -31,6 +31,55 @@ onMounted(() => {
     employeesStore.loadEmployees();
 });
 
+useHead({
+    title: 'Наши сотрудники - Awesome Travel / Our Employees - Awesome Travel',
+    meta: [
+        {
+            name: 'description',
+            content: 'Познакомьтесь с нашей командой профессионалов в Awesome Travel. Мы гордимся нашими сотрудниками, которые обеспечивают высокий уровень сервиса и незабываемые впечатления от путешествий. / Meet our team of professionals at Awesome Travel. We are proud of our employees who provide high-level service and unforgettable travel experiences.'
+        },
+        {
+            name: 'keywords',
+            content: 'сотрудники, команда, профессионалы, туризм, путешествия, Awesome Travel, employees, team, professionals, tourism, travel'
+        },
+        {
+            property: 'og:title',
+            content: 'Наши сотрудники - Awesome Travel / Our Employees - Awesome Travel'
+        },
+        {
+            property: 'og:description',
+            content: 'Познакомьтесь с нашей командой профессионалов в Awesome Travel. Мы гордимся нашими сотрудниками, которые обеспечивают высокий уровень сервиса и незабываемые впечатления от путешествий. / Meet our team of professionals at Awesome Travel. We are proud of our employees who provide high-level service and unforgettable travel experiences.'
+        },
+        {
+            property: 'og:image',
+            content: 'https://example.com/employees-image.jpg'
+        },
+        {
+            property: 'og:url',
+            content: 'https://example.com/employees'
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+        },
+        {
+            name: 'twitter:title',
+            content: 'Наши сотрудники - Awesome Travel / Our Employees - Awesome Travel'
+        },
+        {
+            name: 'twitter:description',
+            content: 'Познакомьтесь с нашей командой профессионалов в Awesome Travel. Мы гордимся нашими сотрудниками, которые обеспечивают высокий уровень сервиса и незабываемые впечатления от путешествий. / Meet our team of professionals at Awesome Travel. We are proud of our employees who provide high-level service and unforgettable travel experiences.'
+        },
+        {
+            name: 'twitter:image',
+            content: 'https://example.com/employees-image.jpg'
+        }
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://example.com/employees' }
+    ]
+});
+
 const employees = computed(() => employeesStore.employees);
 const loading = computed(() => employeesStore.loading);
 const error = computed(() => employeesStore.error);

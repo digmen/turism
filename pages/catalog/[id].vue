@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <article class="catalog__path">
-      <NuxtLink to="/">{{ $t('header.mainPage') }} &nbsp;/</NuxtLink>
+      <NuxtLink :to="localPath('/')">{{ $t('header.mainPage') }} &nbsp;/</NuxtLink>
       <span style="cursor: pointer;" @click="goBack">{{ $t('header.catalog') }} &nbsp;/&nbsp;</span>
       <span v-if="tours.length > 0">{{ tours[0].tour_type }}</span>
     </article>
@@ -16,16 +16,19 @@
         <img :src="tour.image" alt="Сотрудник" />
         <strong class="catalog__content-item-strong">{{ tour.title }}</strong>
         <div class="catalog__content-item-span-div">
-          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.category') }}&nbsp;:&nbsp; </strong>
-          <span class="catalog__content-item-span">{{ tour.tour_type }}</span>
+          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.category') }}&nbsp;:&nbsp;
+            <span class="catalog__content-item-span">{{ tour.tour_type }}</span>
+          </strong>
         </div>
         <div class="catalog__content-item-span-div">
-          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.duration') }}&nbsp;:&nbsp; </strong>
-          <span class="catalog__content-item-span">{{ tour.duration }}</span>
+          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.duration') }}&nbsp;:&nbsp;
+            <span class="catalog__content-item-span">{{ tour.duration }}</span>
+          </strong>
         </div>
         <div class="catalog__content-item-span-div">
-          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.date') }}&nbsp;:&nbsp; </strong>
-          <span class="catalog__content-item-span">{{ formatDate(tour.date_of_start) }}</span>
+          <strong class="catalog__content-item-span-strong">{{ $t('catalogTour.date') }}&nbsp;:&nbsp;
+            <span class="catalog__content-item-span">{{ formatDate(tour.date_of_start) }}</span>
+          </strong>
         </div>
         <div class="line"></div>
       </div>
@@ -41,6 +44,7 @@ import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
 const detailsCatalogToursStore = useDetailsCatalogToursStore();
+const localPath = useLocalePath();
 
 const formatDate = (dateString) => {
   if (!dateString) return 'Не указана';
@@ -63,7 +67,7 @@ watch(
 );
 
 const goToDetails = (id) => {
-  router.push(`/tour/${id}`);
+  router.push(localPath(`/tour/${id}`));
 };
 
 const goBack = () => {
@@ -78,6 +82,20 @@ const loading = computed(() => {
 });
 const error = computed(() => {
   return detailsCatalogToursStore.error;
+});
+
+useHead({
+  title: 'Каталог туров | Tours Catalog',
+  meta: [
+    {
+      name: 'description',
+      content: 'Просмотрите наш каталог туров и найдите идеальный тур для вас. Explore our tours catalog and find the perfect tour for you.'
+    },
+    {
+      name: 'keywords',
+      content: 'туры, каталог туров, путешествия, tours, tours catalog, travel'
+    }
+  ]
 });
 </script>
 

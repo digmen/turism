@@ -1,7 +1,7 @@
 <template>
     <section class="container">
         <article class="catalog__path">
-            <NuxtLink to="/">{{ $t('hottours.home') }} &nbsp;/</NuxtLink>
+            <NuxtLink :to="localPath('/')">{{ $t('hottours.home') }} &nbsp;/</NuxtLink>
             <span>{{ $t('hottours.hottours') }}</span>
         </article>
         <article class="catalog__title">
@@ -36,17 +36,66 @@
     </section>
 </template>
 
-
 <script setup>
 import { useCatalogDiscountTourStore } from '@/stores/catalogDiscountTour';
 import { onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
+const localPath = useLocalePath();
 
 const discountToursStore = useCatalogDiscountTourStore();
 const router = useRouter();
 
 onMounted(() => {
     discountToursStore.loadDiscountTours();
+});
+
+useHead({
+    title: 'Горящие туры - Awesome Travel / Hot Tours - Awesome Travel',
+    meta: [
+        {
+            name: 'description',
+            content: 'Откройте для себя лучшие горящие туры с Awesome Travel. Мы предлагаем уникальные путешествия по Кыргызстану с большими скидками. / Discover the best hot tours with Awesome Travel. We offer unique journeys in Kyrgyzstan with great discounts.'
+        },
+        {
+            name: 'keywords',
+            content: 'горящие туры, скидки на туры, путешествия по Кыргызстану, туры со скидкой, hot tours, tour discounts, travel in Kyrgyzstan, discounted tours'
+        },
+        {
+            property: 'og:title',
+            content: 'Горящие туры - Awesome Travel / Hot Tours - Awesome Travel'
+        },
+        {
+            property: 'og:description',
+            content: 'Откройте для себя лучшие горящие туры с Awesome Travel. Мы предлагаем уникальные путешествия по Кыргызстану с большими скидками. / Discover the best hot tours with Awesome Travel. We offer unique journeys in Kyrgyzstan with great discounts.'
+        },
+        {
+            property: 'og:image',
+            content: 'https://example.com/hottours-image.jpg'
+        },
+        {
+            property: 'og:url',
+            content: 'https://example.com/hottours'
+        },
+        {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+        },
+        {
+            name: 'twitter:title',
+            content: 'Горящие туры - Awesome Travel / Hot Tours - Awesome Travel'
+        },
+        {
+            name: 'twitter:description',
+            content: 'Откройте для себя лучшие горящие туры с Awesome Travel. Мы предлагаем уникальные путешествия по Кыргызстану с большими скидками. / Discover the best hot tours with Awesome Travel. We offer unique journeys in Kyrgyzstan with great discounts.'
+        },
+        {
+            name: 'twitter:image',
+            content: 'https://example.com/hottours-image.jpg'
+        }
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://example.com/hottours' }
+    ]
 });
 
 const formatDate = (dateString) => {
@@ -62,7 +111,7 @@ const formatDate = (dateString) => {
 };
 
 const goToDetails = (id) => {
-    router.push(`/discounttour/${id}`);
+    router.push(localPath(`/discounttour/${id}`));
 };
 
 const discountTours = computed(() => discountToursStore.discountTours);

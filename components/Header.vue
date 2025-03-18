@@ -62,6 +62,36 @@ onMounted(() => {
         language.value = 'en';
     }
 });
+
+useHead({
+    title: 'Главная страница - Awesome Travel / Home Page - Awesome Travel',
+    meta: [
+        {
+            name: 'description',
+            content: 'Добро пожаловать на наш сайт путешествий. / Welcome to our travel site.'
+        },
+        {
+            name: 'keywords',
+            content: 'путешествия, туры, отдых, travel, tours, vacation'
+        },
+        {
+            property: 'og:title',
+            content: 'Главная страница - Awesome Travel / Home Page - Awesome Travel'
+        },
+        {
+            property: 'og:description',
+            content: 'Добро пожаловать на наш сайт путешествий. / Welcome to our travel site.'
+        },
+        {
+            property: 'og:image',
+            content: 'https://example.com/home-thumbnail.jpg'
+        },
+        {
+            property: 'og:url',
+            content: 'https://example.com/home'
+        }
+    ]
+});
 </script>
 
 <style scoped>
