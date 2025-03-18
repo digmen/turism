@@ -1,0 +1,10 @@
+runtime: nodejs18
+env: standard
+instance_class: F1
+
+handlers:
+  - url: /.*
+    script: auto
+
+env_variables:
+  NITRO_PRESET: "node-server"
