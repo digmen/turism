@@ -5,6 +5,8 @@ instance_class: F1
 handlers:
   - url: /.*
     script: auto
+    secure: always
+    login: required
 
 env_variables:
   NITRO_PRESET: "node-server"
