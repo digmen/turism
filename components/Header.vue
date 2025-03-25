@@ -196,7 +196,7 @@ header nav {
     margin-top: 18.5px;
 }
 
-@media (max-width: 1025px) {
+/* @media (max-width: 1025px) {
     .header__link {}
-}
+} */
 </style>

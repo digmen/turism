@@ -1,0 +1,15 @@
+node_modules
+dist
+.git
+.nuxt
+.env
+npm-debug.log
+.output
+.output/
+.output/public/
+.output/server/
+.output/static/
+.output/swc/
+.output/tmp/
+.output/types/
+

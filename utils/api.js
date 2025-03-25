@@ -1,7 +1,7 @@
 import { API_URL } from "~/api/const";
 
 const switchLanguage = () => {
-    const language = localStorage.getItem('language');
+    const language = localStorage.getItem('language') || 'en';
     if (language === 'en') {
         return 'en';
     } else if (language === 'ru') {

@@ -31,33 +31,33 @@
                 </div>
             </div>
             <article class="tour-route">
-                <div class="line_container"></div>
-                <div v-for="item in routeStartEnd" :key="item.id">
+                <!-- <div class="line_container"></div> -->
+                <div v-for="routeStartEnd in routeStartEnd" :key="`tour-${routeStartEnd.id}`">
                     <div class="tour-route__start">
                         <div class="geotag_container">
                             <img src="@/assets/images/geotag.svg" alt="start">
                         </div>
                         <div class="tour-route__start-title">
-                            <h3>{{ item.start_title }}</h3>
-                            <p>{{ item.start_description }}</p>
+                            <h3>{{ routeStartEnd.start_title }}</h3>
+                            <p>{{ routeStartEnd.start_description }}</p>
                         </div>
                     </div>
                     <div class="tour-route__center">
-                        <div v-for="(item, index) in route" :key="item.id" class="tour-route__item">
+                        <div v-for="(route, index) in route" :key="`route-${index}`" class="tour-route__item">
                             <div class="geotag_container">
                                 <img src="@/assets/images/geotag.svg" alt="start">
                             </div>
                             <div class="tour-route__item-container">
                                 <div class="tour-route__item-title">
-                                    <h3> {{ index + 1 }}. {{ item.title }}</h3>
+                                    <h3> {{ index + 1 }}. {{ route.title }}</h3>
                                     <ul>
                                         <li>
-                                            {{ item.description }}
+                                            {{ route.description }}
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="tour-route__img-container">
-                                    <img class="tour-route__img" :src="item.picture" :alt="item.title">
+                                    <img class="tour-route__img" :src="route.picture" :alt="route.title">
                                 </div>
                             </div>
                         </div>
@@ -65,8 +65,8 @@
                     <div class="tour-route__end">
                         <img src="@/assets/images/finish.svg" alt="finish">
                         <div class="tour-route__end-title">
-                            <h3>{{ item.end_title }}</h3>
-                            <p>{{ item.end_description }}</p>
+                            <h3>{{ routeStartEnd.end_title }}</h3>
+                            <p>{{ routeStartEnd.end_description }}</p>
                         </div>
                     </div>
                 </div>
@@ -83,14 +83,14 @@ import Button from '@/ui/Button.vue';
 import { useRouteStore, useRouteStartEndStore } from '~/stores/route';
 const localPath = useLocalePath();
 
-const route = useRoute();
+const routes = useRoute();
 const router = useRouter();
 const tourStore = useTourStore();
 const routeStore = useRouteStore();
 const routeStartEndStore = useRouteStartEndStore();
 
 watch(
-    () => route.params.id,
+    () => routes.params.id,
     (id) => {
         if (id) {
             tourStore.loadTour(id);
@@ -112,13 +112,8 @@ const goContact = () => {
 const tour = computed(() => tourStore.tour || {});
 const loading = computed(() => tourStore.loading);
 const error = computed(() => tourStore.error);
-const routeData = computed(() => routeStore.route || {});
-const loadingRoute = computed(() => routeStore.loading);
-const errorRoute = computed(() => routeStore.error);
 const routeStartEnd = computed(() => routeStartEndStore.routeStartEnd || {});
-const loadingRouteStartEnd = computed(() => routeStartEndStore.loading);
-const errorRouteStartEnd = computed(() => routeStartEndStore.error);
-
+const route = computed(() => routeStore.route || {});
 useHead({
     title: computed(() => tour.value.title ? `${tour.value.title} - Tour Details` : 'Tour Details'),
     meta: [
@@ -241,6 +236,7 @@ useHead({
 
 .tour-route {
     display: flex;
+    margin-top: 40px;
 }
 
 .line_container {
@@ -254,6 +250,8 @@ useHead({
     display: flex;
     justify-content: space-between;
     flex: 1;
+    padding-left: 25px;
+    margin-bottom: 80px;
 
     .tour-route__item-title {
         display: flex;
@@ -264,7 +262,7 @@ useHead({
             padding-left: 50px;
 
             li {
-                width: 470px;
+                width: 570px;
             }
         }
 
@@ -276,7 +274,7 @@ useHead({
 .tour-route__center {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 .tour-route__item {
@@ -284,7 +282,28 @@ useHead({
     flex-direction: row;
     gap: 10px;
     align-items: start;
-    margin-top: 100px;
+    position: relative;
+}
+
+.tour-route__item::before {
+    content: '';
+    width: 0px;
+    height: 90%;
+    /* background-color: #2D2D2D; */
+    /* border-radius: 50%; */
+    position: absolute;
+    /* left: 5.5px; */
+    left: 5px;
+    top: 30px;
+    /* border-left: dotted 8px red; */
+    background-image: url('@/assets/images/dotted.svg');
+    width: 100px;
+    background-repeat: repeat-y;
+    background-position: bottom;
+    /* background-image: radial-gradient(ellipse, #000000 5px, transparent 5px); */
+    /* background-position: left top; */
+    background-repeat: repeat-y;
+    background-size: 10px 17px;
 }
 
 .tour-route__start {
@@ -292,18 +311,20 @@ useHead({
     flex-direction: row;
     gap: 10px;
     align-items: start;
-    margin-bottom: 30px;
 
     .tour-route__start-title {
+        padding-left: 10px;
+        margin-bottom: 30px;
+
         h3 {
-            font-size: 25px;
+            font-size: 20px;
             font-family: var(--font-open-sans);
             font-weight: 700;
             color: #2D2D2D;
         }
 
         p {
-            font-size: 22px;
+            font-size: 17px;
             font-family: var(--font-open-sans);
             font-weight: 400;
             color: #2D2D2D;
@@ -313,22 +334,24 @@ useHead({
 }
 
 .tour-route__end {
-    margin-top: 113px;
+    /* margin-top: 113px; */
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: start;
 
     .tour-route__end-title {
+        padding-left: 10px;
+
         h3 {
-            font-size: 25px;
+            font-size: 20px;
             font-family: var(--font-open-sans);
             font-weight: 700;
             color: #2D2D2D;
         }
 
         p {
-            font-size: 22px;
+            font-size: 17px;
             font-family: var(--font-open-sans);
             font-weight: 400;
             color: #2D2D2D;
