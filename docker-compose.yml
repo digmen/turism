@@ -31,13 +31,16 @@ services:
     build:
       context: . # Указываем текущую директорию как контекст сборки
       dockerfile: Dockerfile
+    image: nuxt-frontend:latest
     container_name: nuxt-frontend
     restart: unless-stopped
     environment:
       - BACKEND_URL=https://awesomekyrgyztravel.com/api/v1
     networks:
       - dev
+    # Явно указываем, что томов нет
+    volumes: []
 
 networks:
   dev:
-    name: dev
+    name: dev_network

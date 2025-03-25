@@ -174,7 +174,6 @@ export const fetchDiscountTour = async (id) => {
     }
 }
 
-
 export const fetchCatalogDiscountTours = async () => {
     const language = switchLanguage()
     try {
@@ -194,6 +193,47 @@ export const fetchCatalogDiscountTours = async () => {
         throw error;
     }
 }
+
+export const fetchDiscountRoute = async (id) => {
+    const language = switchLanguage()
+    try {
+        const response = await fetch(`${API_URL}/discount-tours/${id}/route/?language=${language}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Ошибка при получение данных путей:', error);
+        throw error;
+    }
+}
+
+export const fetchDiscountRouteStartEnd = async (id) => {
+    const language = switchLanguage()
+    try {
+        const response = await fetch(`${API_URL}/discount-tours/${id}/start-end/?language=${language}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Ошибка при получение данных путей:', error);
+        throw error;
+    }
+}
+
 
 export const fetchCountry = async () => {
     const language = switchLanguage()

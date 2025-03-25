@@ -1,5 +1,5 @@
-# Используем официальную базу для Node.js
-FROM node:20-alpine
+# Этап сборки
+FROM node:20-alpine AS builder
 
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
@@ -13,8 +13,20 @@ RUN npm install
 # Копируем все остальные файлы в контейнер
 COPY . .
 
+# Устанавливаем переменную среды
+ENV NODE_ENV=production
+
 # Строим проект Nuxt
 RUN npm run build
+
+# Финальный этап
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Копируем только необходимые файлы из этапа сборки
+COPY --from=builder /app/.output /app/.output
+COPY --from=builder /app/package.json /app/package.json
 
 # Указываем порт, на котором будет работать приложение
 EXPOSE 3000

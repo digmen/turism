@@ -31,7 +31,6 @@
                 </div>
             </div>
             <article class="tour-route">
-                <!-- <div class="line_container"></div> -->
                 <div v-for="routeStartEnd in routeStartEnd" :key="`tour-${routeStartEnd.id}`">
                     <div class="tour-route__start">
                         <div class="geotag_container">
@@ -61,12 +60,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="tour-route__end">
-                        <img src="@/assets/images/finish.svg" alt="finish">
-                        <div class="tour-route__end-title">
-                            <h3>{{ routeStartEnd.end_title }}</h3>
-                            <p>{{ routeStartEnd.end_description }}</p>
+                        <div class="tour-route__end">
+                            <img src="@/assets/images/finish.svg" alt="finish">
+                            <div class="tour-route__end-title">
+                                <h3>{{ routeStartEnd.end_title }}</h3>
+                                <p>{{ routeStartEnd.end_description }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -239,12 +238,6 @@ useHead({
     margin-top: 40px;
 }
 
-.line_container {
-    background-image: url('@/assets/images/line.svg');
-    width: 100px;
-    background-repeat: repeat-y;
-    background-position: bottom;
-}
 
 .tour-route__item-container {
     display: flex;
@@ -287,23 +280,28 @@ useHead({
 
 .tour-route__item::before {
     content: '';
-    width: 0px;
+    width: 10px;
     height: 90%;
-    /* background-color: #2D2D2D; */
-    /* border-radius: 50%; */
     position: absolute;
-    /* left: 5.5px; */
-    left: 5px;
+    left: 8px;
     top: 30px;
-    /* border-left: dotted 8px red; */
     background-image: url('@/assets/images/dotted.svg');
-    width: 100px;
+    background-position: left top;
     background-repeat: repeat-y;
-    background-position: bottom;
-    /* background-image: radial-gradient(ellipse, #000000 5px, transparent 5px); */
-    /* background-position: left top; */
+    background-size: 5px 20px;
+}
+
+.tour-route__start::before {
+    content: '';
+    width: 10px;
+    height: 80%;
+    position: absolute;
+    left: 8px;
+    top: 30px;
+    background-image: url('@/assets/images/dotted.svg');
+    background-position: left top;
     background-repeat: repeat-y;
-    background-size: 10px 17px;
+    background-size: 5px 20px;
 }
 
 .tour-route__start {
@@ -311,6 +309,7 @@ useHead({
     flex-direction: row;
     gap: 10px;
     align-items: start;
+    position: relative;
 
     .tour-route__start-title {
         padding-left: 10px;
@@ -337,11 +336,15 @@ useHead({
     /* margin-top: 113px; */
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    /* gap: 10px; */
     align-items: start;
 
+    img {
+        transform: translateX(-18px);
+    }
+
     .tour-route__end-title {
-        padding-left: 10px;
+        /* padding-left: 10px; */
 
         h3 {
             font-size: 20px;
