@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nuxtjs/i18n": "^9.3.1",
+    "@nuxtjs/sitemap": "^7.2.9",
     "pinia": "^3.0.1",
     "swiper": "^11.2.2",
     "vue-i18n": "^11.1.2",

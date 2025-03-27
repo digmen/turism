@@ -1,5 +1,5 @@
 <template>
-  <div class="custom-select" :tabindex="tabindex" @blur="open = false" :style="{ width: width + 'px' }">
+  <div class="custom-select" :tabindex="tabindex" @blur="open = false">
     <div class="selected" :class="{ open: open }" @click="open = !open" :aria-label="$t('customSelect.selected')">
       <span>
         {{ displayValue }}
@@ -82,6 +82,7 @@ watch(() => props.options, (newOptions) => {
   text-align: left;
   outline: none;
 }
+
 
 .selected {
   display: flex;

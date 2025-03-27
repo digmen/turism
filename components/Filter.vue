@@ -5,12 +5,12 @@
     <div class="filter__container">
         <form class="filter__form" :aria-label="$t('filter.form')" @submit.prevent="submitFilter">
             <CustomSelect :options="country.map(item => ({ name: item.name, id: item.id }))"
-                :default="$t('filter.selectCountry')" class="select" @input="handleInputCountry" :width="300"
+                :default="$t('filter.selectCountry')" class="select" @input="handleInputCountry"
                 :aria-label="$t('filter.selectCountry')" :key="'country-' + selectedCountryKey" />
             <CustomSelect :options="months.map(month => ({ name: month }))" :default="$t('filter.selectMonth')"
-                class="select" :width="230" :aria-label="$t('filter.selectMonth')" />
+                class="select" :aria-label="$t('filter.selectMonth')" />
             <CustomSelect :options="tours.map(item => ({ title: item.title, id: item.id }))"
-                :default="$t('filter.selectTour')" class="select" @input="handleInputTour" :width="300"
+                :default="$t('filter.selectTour')" class="select" @input="handleInputTour"
                 :aria-label="$t('filter.selectTour')" :key="'tour-' + selectedTourKey" />
             <Button :title="$t('filter.findTour')" :aria-label="$t('filter.findTourButton')" size="15px" />
         </form>
@@ -107,7 +107,19 @@ const tours = computed(() => toursStore.tours.map(item => ({ id: item.id, title:
     gap: 50px;
 }
 
-@media (max-width: 1025px) {
+.select:nth-child(1) {
+    width: 300px;
+}
+
+.select:nth-child(2) {
+    width: 230px;
+}
+
+.select:nth-child(3) {
+    width: 300px;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
     .filter__container {
         max-width: 100%;
     }
@@ -119,6 +131,18 @@ const tours = computed(() => toursStore.tours.map(item => ({ id: item.id, title:
     .filter__form {
         height: 80px;
         gap: 20px;
+    }
+
+    .select:nth-child(1) {
+        width: 240px;
+    }
+
+    .select:nth-child(2) {
+        width: 190px;
+    }
+
+    .select:nth-child(3) {
+        width: 260px;
     }
 }
 </style>

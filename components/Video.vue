@@ -169,9 +169,12 @@ useHead({
     transition: background-color 1s ease;
 }
 
-@media (max-width: 1025px) {
+@media (min-width: 1024px) and (max-width: 1439px) {
     .video {
-        margin-top: 125px;
+        margin-top: 90px;
+        z-index: 1;
+        width: 900px;
+        height: 430px;
     }
 }
 </style>

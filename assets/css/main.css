@@ -33,6 +33,10 @@
     font-family: var(--font-open-sans);
 }
 
+* {
+    border: 1px solid red;
+}
+
 button {
     border: none;
 }
@@ -44,6 +48,6 @@ button {
 
 @media (max-width: 1025px) {
     .container {
-        max-width: 884px;
+        max-width: 940px;
     }
 }

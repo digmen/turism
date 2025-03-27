@@ -29,10 +29,14 @@
             </NuxtLink>
         </nav>
         <div class="header__lang">
-            <button class="header__lang-btn" :class="{ 'active': language === 'ru' }" @click="setLanguage('ru')"
-                aria-label="{{ $t('header.language') }}">Ru</button>
-            <button class="header__lang-btn" :class="{ 'active': language === 'en' }" @click="setLanguage('en')"
-                aria-label="{{ $t('header.language') }}">Eng</button>
+            <a href="#header">
+                <button class="header__lang-btn" :class="{ 'active': language === 'ru' }" @click="setLanguage('ru')"
+                    aria-label="{{ $t('header.language') }}">Ru</button>
+            </a>
+            <a href="#header">
+                <button class="header__lang-btn" :class="{ 'active': language === 'en' }" @click="setLanguage('en')"
+                    aria-label="{{ $t('header.language') }}">Eng</button>
+            </a>
         </div>
     </header>
     <div class="container">
@@ -196,7 +200,15 @@ header nav {
     margin-top: 18.5px;
 }
 
-/* @media (max-width: 1025px) {
-    .header__link {}
-} */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .header__link[data-v-a81738bd] {
+        color: #fff;
+        font-family: var(--font-open-sans);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 400;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+}
 </style>

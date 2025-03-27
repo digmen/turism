@@ -174,4 +174,17 @@ useHead({
   font-weight: 600;
   color: #2d2d2d;
 }
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .catalog-tour__content {
+    width: 1000px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card_width));
+    grid-auto-rows: var(--row_increment);
+    justify-content: center;
+  }
+}
 </style>

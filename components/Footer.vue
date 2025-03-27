@@ -284,7 +284,7 @@ useHead({
 }
 
 
-@media (max-width: 1025px) {
+@media (min-width: 1024px) and (max-width: 1439px) {
     .footer__bottom {
         padding-inline: 69px;
     }
@@ -297,14 +297,31 @@ useHead({
     .footer__email,
     .footer__hours,
     .footer__address {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
         .footer__contact-title,
         .footer__email-title,
         .footer__hours-title,
         .footer__address-title {
-            font-size: 10px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: var(--font-inter);
+        }
+
+        .footer__contact-link,
+        .footer__email-link,
+        .footer__hours-detail,
+        .footer__address-detail {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: var(--font-inter);
+            text-decoration: none;
+
         }
     }
-
 }
 </style>
