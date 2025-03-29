@@ -490,11 +490,12 @@ useHead({
         padding-right: 0px;
         background-color: #F63441;
         border-radius: 100%;
-        width: 445px;
+        width: 300px;
         height: 480px;
         position: relative;
         left: 0px;
-        bottom: -30px;
+        bottom: -39px;
+        padding-bottom: 28px;
 
         a {
             text-decoration: none;

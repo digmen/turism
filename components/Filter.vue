@@ -250,11 +250,11 @@ const tours = computed(() => toursStore.tours.map(item => ({ id: item.id, title:
     }
 
     .select:nth-child(1) {
-        width: 300px;
+        width: 200px;
     }
 
     .select:nth-child(2) {
-        width: 300px;
+        width: 200px;
     }
 
     .select:nth-child(3) {
