@@ -19,9 +19,11 @@
                             <span class="tour-content__top-price">{{ tour.discount_price }}$</span>
                             <span class="tour-content__top-price-old">{{ tour.original_price }}$</span>
                         </div>
-                        <Button :title="$t('deteilsRout.booking')" :aria-label="$t('deteilsRout.bookingButton')"
-                            @click="goContact" />
+                        <Button class="tour_btn" :title="$t('deteilsRout.booking')"
+                            :aria-label="$t('deteilsRout.bookingButton')" @click="goContact" />
                     </div>
+                    <Button class="tour_btn-mobile" :title="$t('deteilsRout.booking')"
+                        :aria-label="$t('deteilsRout.bookingButton')" @click="goContact" />
                 </div>
                 <div class="tour-details">
                     <p><strong>{{ $t('deteilsRout.category') }}:</strong> {{ tour.tour_type }}</p>
@@ -394,6 +396,613 @@ useHead({
         height: 100%;
         object-fit: cover;
         border-radius: 0px 40px 0px 40px;
+    }
+}
+
+.tour_btn-mobile {
+    display: none;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .tour-route__item-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .tour-route__img-container {
+        padding-left: 50px;
+    }
+
+    .tour-route__item::before {
+        height: 93%;
+    }
+
+    .tour-content__top {
+        position: relative;
+
+        img {
+            width: 100%;
+            max-height: 506px;
+            border-radius: 10px;
+        }
+
+        .tour-content__top-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 24px 55px;
+
+            .tour-content__top-price {
+                font-size: 56px;
+                padding-bottom: 20px;
+            }
+
+            .tour-content__top-price-old {
+                padding: 0px 15px 20px 10px;
+            }
+
+            .tour-content__top-price {
+                font-size: 56px;
+            }
+
+            h1 {
+                font-size: 35px;
+            }
+
+            p {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+@media (min-width: 427px) and (max-width: 768px) {
+    .tour-route__item-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .tour-content {
+        margin-top: 10px;
+    }
+
+    .catalog__path {
+        margin: 0;
+    }
+
+    .tour-route__img-container {
+        padding-left: 50px;
+    }
+
+    .tour-route__item::before {
+        height: 94%;
+    }
+
+    .tour-content__top {
+        position: relative;
+
+        img {
+            width: 100%;
+            max-height: 506px;
+            border-radius: 10px;
+        }
+
+        .tour-content__top-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 52px 55px;
+
+
+            .tour-content__top-price {
+                font-size: 40px;
+            }
+
+            h1 {
+                font-size: 20px;
+                width: 59%;
+            }
+
+            p {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .tour-details {
+        padding-inline: 13px;
+        margin-top: 38px;
+
+        p {
+            font-size: 17px;
+        }
+    }
+
+    .tour-route__start {
+
+        .tour-route__start-title {
+            padding-left: 10px;
+            margin-bottom: 30px;
+            padding-right: 10px;
+
+            h3 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 17px;
+            }
+        }
+    }
+
+    .tour-route {
+        display: flex;
+        margin-top: 40px;
+        margin-inline: 30px;
+    }
+
+    .tour-route__start::before {
+        height: 89%;
+    }
+
+}
+
+@media (min-width: 377px) and (max-width: 426px) {
+    .tour-route__item-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
+
+    .tour-content {
+        margin-top: 10px;
+    }
+
+    .catalog__path,
+    .geotag_container,
+    .tour-route__item::before,
+    .tour-route__start::before {
+        display: none;
+    }
+
+    .tour-route__img-container {
+        padding-left: 20px;
+        width: 400px;
+        height: 220px;
+    }
+
+    .tour-content__top {
+        position: relative;
+
+        img {
+            width: 400px;
+            height: 290px;
+            border-radius: 10px;
+        }
+
+        .tour-content__top-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 55px 29px;
+
+
+            .tour-content__top-price {
+                font-size: 40px;
+                width: max-content;
+            }
+
+            h1 {
+                font-size: 18px;
+                width: 59%;
+            }
+
+            p {
+                width: 60%;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .tour-details {
+        padding-inline: 0px;
+        margin-top: 38px;
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .tour-route__start {
+
+        .tour-route__start-title {
+            padding-left: 0px;
+            margin-bottom: 30px;
+            padding-right: 0px;
+
+            h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .tour-route {
+        display: flex;
+        margin-top: 40px;
+        margin-inline: 0px;
+    }
+
+    .tour-route__end {
+        img {
+            display: none;
+        }
+
+        .tour-route__end-title {
+
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .tour-route__item-title {
+        h3 {
+            font-size: 18px;
+        }
+    }
+
+    .tour-route__item-container {
+        padding-left: 25px;
+        margin-bottom: 20px;
+        padding: 0;
+
+
+        .tour-route__item-title {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            ul {
+                padding-left: 20px;
+
+                li {
+                    width: 380px;
+                }
+            }
+
+        }
+    }
+
+    .tour_btn {
+        display: none;
+    }
+
+    .tour_btn-mobile {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 376px) {
+    .tour-route__item-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
+
+    .tour-content {
+        margin-top: 10px;
+    }
+
+    .catalog__path,
+    .geotag_container,
+    .tour-route__item::before,
+    .tour-route__start::before {
+        display: none;
+    }
+
+    .tour-route__img-container {
+        padding-left: 20px;
+        width: 100%;
+        height: 220px;
+    }
+
+    .tour-content__top {
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 240px;
+            border-radius: 10px;
+        }
+
+        .tour-content__top-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 55px 29px;
+
+
+            .tour-content__top-price {
+                font-size: 40px;
+                width: max-content;
+            }
+
+            h1 {
+                font-size: 18px;
+                width: 59%;
+            }
+
+            p {
+                display: none;
+                width: 60%;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .tour-details {
+        padding-inline: 0px;
+        margin-top: 38px;
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .tour-route__start {
+
+        .tour-route__start-title {
+            padding-left: 0px;
+            margin-bottom: 30px;
+            padding-right: 0px;
+
+            h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .tour-route {
+        display: flex;
+        margin-top: 40px;
+        margin-inline: 0px;
+    }
+
+    .tour-route__end {
+        img {
+            display: none;
+        }
+
+        .tour-route__end-title {
+
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .tour-route__item-title {
+        h3 {
+            font-size: 18px;
+        }
+    }
+
+    .tour-route__item-container {
+        padding-left: 25px;
+        margin-bottom: 20px;
+        padding: 0;
+
+
+        .tour-route__item-title {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            ul {
+                padding-left: 20px;
+
+                li {
+                    width: 320px;
+                }
+            }
+
+        }
+    }
+
+    .tour_btn {
+        display: none;
+    }
+
+    .tour_btn-mobile {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 321px) {
+    .tour-route__item-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
+
+    .tour-content {
+        margin-top: 10px;
+    }
+
+    .catalog__path,
+    .geotag_container,
+    .tour-route__item::before,
+    .tour-route__start::before {
+        display: none;
+    }
+
+    .tour-route__img-container {
+        padding-left: 0px;
+        width: 100%;
+        height: 220px;
+    }
+
+    .tour-content__top {
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        .tour-content__top-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 70px 29px;
+
+            .tour-content__top-price-old::after {
+                width: 91%;
+                border-bottom: 3px solid #990711;
+            }
+
+            .tour-content__top-price-old {
+                font-size: 20px;
+            }
+
+            .tour-content__top-price {
+                font-size: 30px;
+                width: 30%;
+                padding: 0;
+            }
+
+            h1 {
+                font-size: 15px;
+                width: 60%;
+            }
+
+            p {
+                display: none;
+                width: 0;
+                font-size: 20px;
+                padding-top: 10px;
+                padding-bottom: 0px;
+            }
+        }
+    }
+
+    .tour-details {
+        padding-inline: 0px;
+        margin-top: 38px;
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .tour-route__start {
+
+        .tour-route__start-title {
+            padding-left: 0px;
+            margin-bottom: 30px;
+            padding-right: 0px;
+
+            h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .tour-route {
+        display: flex;
+        margin-top: 40px;
+        margin-inline: 0px;
+    }
+
+    .tour-route__end {
+        img {
+            display: none;
+        }
+
+        .tour-route__end-title {
+
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .tour-route__item-title {
+        h3 {
+            font-size: 18px;
+        }
+    }
+
+    .tour-route__item-container {
+        padding-left: 0px;
+        margin-bottom: 20px;
+        padding: 0;
+
+
+        .tour-route__item-title {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    width: 300px;
+                }
+            }
+
+        }
+    }
+
+    .tour_btn {
+        display: none;
+    }
+
+    .tour_btn-mobile {
+        width: 100%;
+        display: block;
     }
 }
 </style>
