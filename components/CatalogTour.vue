@@ -5,7 +5,8 @@
       <article class="catalog-tour__content">
         <div v-if="loading" aria-live="polite" class="catalog-tour__loading">{{ $t('catalogTour.loading') }}</div>
         <div v-if="error" role="alert">{{ error }}</div>
-        <div v-if="tours.length === 0 && !loading && !error" role="alert">{{ $t('catalogTour.noTours') }}</div>
+        <div style="text-align: center;" v-if="tours.length === 0 && !loading && !error" role="alert">{{
+          $t('catalogTour.noTours') }}</div>
         <div class="catalog-tour__item-container" v-for="(tour, index) in tours" :key="tour.id"
           :class="getCardClass(index)" @click="goToDetails(tour.id)">
           <img class="catalog-tour__item-image" :src="tour.background_image"

@@ -6,8 +6,9 @@
         <article>
             <div v-if="loading" class="loading">{{ $t('employees.loading') }}</div>
             <div v-else-if="error" class="error">{{ error }}</div>
-            <div v-if="employees.length === 0 && !loading && !error" role="alert" class="no-data">{{
-                $t('employees.noData') }}</div>
+            <div style="text-align: center;" v-if="employees.length === 0 && !loading && !error" role="alert"
+                class="no-data">{{
+                    $t('employees.noData') }}</div>
         </article>
         <article class="employees__content">
             <div v-for="(employee) in employees" :key="employee.id" class="employees__content-item">
