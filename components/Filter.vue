@@ -97,6 +97,7 @@ const tours = computed(() => toursStore.tours.map(item => ({ id: item.id, title:
     font-weight: 700;
     font-size: 25px;
     color: #2D2D2D;
+    text-align: center;
 }
 
 .filter__form {
