@@ -12,7 +12,8 @@
             <CustomSelect :options="tours.map(item => ({ title: item.title, id: item.id }))"
                 :default="$t('filter.selectTour')" class="select" @input="handleInputTour"
                 :aria-label="$t('filter.selectTour')" :key="'tour-' + selectedTourKey" />
-            <Button :title="$t('filter.findTour')" :aria-label="$t('filter.findTourButton')" size="15px" />
+            <Button class="filter_btn" :title="$t('filter.findTour')" :aria-label="$t('filter.findTourButton')"
+                size="15px" />
         </form>
     </div>
 </template>
@@ -143,6 +144,53 @@ const tours = computed(() => toursStore.tours.map(item => ({ id: item.id, title:
 
     .select:nth-child(3) {
         width: 260px;
+    }
+}
+
+@media (min-width: 427px) and (max-width: 768px) {
+    .filter__form {
+        gap: 10px;
+    }
+
+    .btn {
+        white-space: nowrap;
+        padding: 2px 23px;
+    }
+}
+
+@media (min-width: 377px) and (max-width: 426px) {
+    .filter__form {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        height: 100%;
+        gap: 30px;
+        padding-inline: 20px;
+    }
+
+    .filter {
+        margin-bottom: 20px;
+    }
+
+    .filter__title {
+        font-size: 18px;
+    }
+
+    .select:nth-child(1) {
+        width: 300px;
+    }
+
+    .select:nth-child(2) {
+        width: 300px;
+    }
+
+    .select:nth-child(3) {
+        width: 350px;
+    }
+
+    .filter_btn {
+        width: 100%;
     }
 }
 </style>

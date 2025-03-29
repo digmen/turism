@@ -1,6 +1,15 @@
 <template>
-  <swiper :modules="modules" :slides-per-view="1" :space-between="10" :pagination="{ clickable: true }" navigation
-    :speed="1500" class="mySwiper">
+  <swiper :modules="modules" :slides-per-view="1" :space-between="10" :pagination="{ clickable: true }" :speed="1500"
+    :autoplay="{ delay: 3000, disableOnInteraction: false }" loop :navigation="{ enabled: true }" :breakpoints="{
+      0: {
+        navigation: false,
+        pagination: { clickable: false }
+      },
+      768: {
+        navigation: true,
+        pagination: { clickable: true }
+      }
+    }" class="mySwiper">
     <swiper-slide v-for="(slide, index) in sliderData" :key="index">
       <div class="slider__item">
         <div class="slider__item-img">
@@ -17,7 +26,6 @@
     </swiper-slide>
   </swiper>
 </template>
-<!-- :autoplay="{ delay: 3000, disableOnInteraction: false }" loop -->
 <script setup>
 import { useRouter } from 'vue-router';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -134,6 +142,52 @@ useHead({
   .slider__item-title {
     width: 433px;
     font-size: 35px;
+  }
+}
+
+@media (min-width: 770px) and (max-width: 1024px) {
+  .slider__item-img {
+    width: 800px;
+    height: 410px;
+  }
+}
+
+@media (min-width: 427px) and (max-width: 769px) {
+  .slider__item-img {
+    width: 600px;
+    height: 370px;
+  }
+
+  .slider__item-content {
+    padding-left: 110px;
+    padding-top: 160px;
+  }
+
+  .slider__item-title {
+    width: 300px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 377px) and (max-width: 426px) {
+  .slider__item-img {
+    width: 400px;
+    height: 300px;
+  }
+
+  .swiper {
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+
+  .slider__item-content {
+    padding-left: 10px;
+    padding-top: 150px;
+  }
+
+  .slider__item-title {
+    width: 300px;
+    font-size: 20px;
   }
 }
 </style>

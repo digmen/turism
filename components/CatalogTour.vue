@@ -187,4 +187,16 @@ useHead({
     justify-content: center;
   }
 }
+
+@media (min-width: 427px) and (max-width: 769px) {
+  .catalog-tour__content {
+    width: 700px;
+  }
+}
+
+@media (min-width: 377px) and (max-width: 426px) {
+  .catalog-tour__content {
+    width: 400px;
+  }
+}
 </style>

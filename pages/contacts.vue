@@ -14,7 +14,7 @@
                     <input id="phone_number" v-model="phone_number" type="text" :placeholder="$t('contacts.phone')"
                         required>
                     <textarea id="text" v-model="text" :placeholder="$t('contacts.message')" required />
-                    <Button :title="$t('contacts.submit')" type="submit" width="270px" />
+                    <Button class="contact_btn" :title="$t('contacts.submit')" type="submit" width="270px" />
                 </form>
             </section>
             <aside class="contacts__img">
@@ -97,11 +97,11 @@ const submitForm = async () => {
     };
 
 
-    const csrfToken = Cookies.get("csrftoken");
     try {
+        const csrfToken = Cookies.get("csrftoken");
         const response = await axios.post(`${API_URL}/messages/`, payload, {
             headers: {
-                'X-CSRFToken': csrftoken,
+                'X-CSRFToken': csrfToken,
                 'Content-Type': 'application/json'
             }
         });
@@ -293,7 +293,7 @@ const submitForm = async () => {
 
     }
 
-    .btn {
+    .contact_btn {
         width: 100% !important;
     }
 }

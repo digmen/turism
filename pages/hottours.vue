@@ -224,4 +224,76 @@ const error = computed(() => discountToursStore.error);
     margin-top: 15px;
     background-color: #2D2D2D;
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .catalog__content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 427px) and (max-width: 768px) {
+    .catalog__content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 377px) and (max-width: 426px) {
+    .catalog__content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .catalog__title {
+        h1 {
+            font-size: 18px;
+        }
+    }
+
+    .catalog__path {
+        display: none;
+    }
+
+    .catalog__title {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 376px) {
+    .catalog__content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .catalog__title {
+        h1 {
+            font-size: 18px;
+        }
+    }
+
+    .catalog__path {
+        display: none;
+    }
+
+    .catalog__title {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 321px) {
+    .catalog__content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .catalog__title {
+        h1 {
+            font-size: 18px;
+        }
+    }
+
+    .catalog__path {
+        display: none;
+    }
+
+    .catalog__title {
+        margin-top: 0;
+    }
+}
 </style>

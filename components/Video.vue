@@ -177,4 +177,10 @@ useHead({
         height: 430px;
     }
 }
+
+@media (min-width: 377px) and (max-width: 426px) {
+    .video {
+        height: 300px;
+    }
+}
 </style>

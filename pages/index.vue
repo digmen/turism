@@ -120,7 +120,7 @@ useHead({
     link: [
         { rel: 'canonical', href: 'https://example.com/current-page' }
     ]
-})
+});
 </script>
 
 <style scoped>
@@ -300,7 +300,7 @@ useHead({
     }
 
     .about__bg {
-        z-index: 1;
+        z-index: -1;
     }
 
     .advantages__content {
@@ -325,5 +325,76 @@ useHead({
         height: 380px;
     }
 
+}
+
+@media (min-width: 427px) and (max-width: 769px) {
+    .slider__item-img {
+        width: 800px;
+        height: 410px;
+    }
+
+    .contact_block__content {
+        h2 {
+            font-size: 18px;
+        }
+    }
+
+    .advantages__content {
+        width: 600px;
+    }
+}
+
+@media (min-width: 377px) and (max-width: 426px) {
+    .advantages__content {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about__logo,
+    .about__bg {
+        display: none;
+    }
+
+    .contact_block__content {
+
+        h2 {
+            font-size: 18px;
+            text-align: center;
+        }
+    }
+
+    .contact_block {
+        padding: 15px;
+        padding-bottom: 0px;
+        height: 180px;
+        flex-direction: column;
+    }
+
+    .contact_block__content {
+        padding-left: 0px;
+    }
+
+    .contact_block__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding-right: 0px;
+        background-color: #F63441;
+        border-radius: 100%;
+        width: 445px;
+        height: 480px;
+        position: relative;
+        left: 0px;
+        bottom: -30px;
+
+        a {
+            text-decoration: none;
+            font-family: var(--font-open-sans);
+            font-weight: 700;
+            font-size: 16px;
+            color: #ffffff;
+        }
+    }
 }
 </style>
