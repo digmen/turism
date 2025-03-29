@@ -96,14 +96,16 @@ const submitForm = async () => {
         text: text.value,
     };
 
+
+    const csrfToken = Cookies.get("csrftoken");
     try {
-        const response = await fetch(`${API_URL}/messages/`, {
-            method: 'POST',
+        const response = await axios.post(`${API_URL}/messages/`, payload, {
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
+                'X-CSRFToken': csrftoken,
+                'Content-Type': 'application/json'
+            }
         });
+
         if (response.ok) {
             toast.success('Отправлено');
         } else {
