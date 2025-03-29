@@ -34,7 +34,7 @@
 }
 
 * {
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 button {
@@ -49,5 +49,29 @@ button {
 @media (max-width: 1025px) {
     .container {
         max-width: 940px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 740px;
+    }
+}
+
+@media (max-width: 426px) {
+    .container {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 376px) {
+    .container {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 321px) {
+    .container {
+        max-width: 300px;
     }
 }

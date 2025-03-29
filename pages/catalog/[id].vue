@@ -40,9 +40,11 @@
 import { useDetailsCatalogToursStore } from '~/stores/catalogTours';
 import { computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 const route = useRoute();
 const router = useRouter();
+const { locale } = useI18n();
 const detailsCatalogToursStore = useDetailsCatalogToursStore();
 const localPath = useLocalePath();
 
@@ -64,6 +66,15 @@ watch(
     if (id) detailsCatalogToursStore.loadDetailsCatalogTours(id);
   },
   { immediate: true }
+);
+
+watch(
+  locale,
+  () => {
+    if (route.params.id) {
+      detailsCatalogToursStore.loadDetailsCatalogTours(route.params.id);
+    }
+  }
 );
 
 const goToDetails = (id) => {

@@ -226,4 +226,151 @@ const submitForm = async () => {
 .contacts__img img:nth-child(4) {
     transform: translate(-25px, 20px);
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .contacts__img {
+        display: none;
+    }
+}
+
+@media (min-width: 427px) and (max-width: 768px) {
+    .contacts__img {
+        display: none;
+    }
+
+    .catalog__path {
+        margin: 0;
+    }
+
+    .contacts {
+        margin-top: 10px;
+    }
+
+    .contacts__form {
+        h1 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (min-width: 377px) and (max-width: 426px) {
+    .contacts__img {
+        display: none;
+    }
+
+    .catalog__path {
+        margin: 0;
+    }
+
+    .contacts {
+        margin-top: 10px;
+    }
+
+    .contacts__form {
+        h1 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 16px;
+            width: 400px;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+        }
+
+    }
+
+    .btn {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 376px) {
+    .contacts__img {
+        display: none;
+    }
+
+    .catalog__path {
+        display: none;
+    }
+
+    .contacts {
+        margin-top: 10px;
+    }
+
+    .contacts__form {
+        h1 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 16px;
+            width: 100%
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+        }
+
+    }
+
+    .btn {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 321px) {
+    .contacts__img {
+        display: none;
+    }
+
+    .catalog__path {
+        display: none;
+    }
+
+    .contacts {
+        margin-top: 10px;
+    }
+
+    .contacts__form {
+        h1 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 16px;
+            width: 100%
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+        }
+
+    }
+
+    .btn {
+        width: 100% !important;
+    }
+}
 </style>
