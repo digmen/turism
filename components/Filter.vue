@@ -193,4 +193,76 @@ const tours = computed(() => toursStore.tours.map(item => ({ id: item.id, title:
         width: 100%;
     }
 }
+
+@media (min-width: 321px) and (max-width: 376px) {
+    .filter__form {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        height: 100%;
+        gap: 30px;
+        padding-inline: 20px;
+    }
+
+    .filter {
+        margin-bottom: 20px;
+    }
+
+    .filter__title {
+        font-size: 18px;
+    }
+
+    .select:nth-child(1) {
+        width: 300px;
+    }
+
+    .select:nth-child(2) {
+        width: 300px;
+    }
+
+    .select:nth-child(3) {
+        width: 100%;
+    }
+
+    .filter_btn {
+        width: 100%;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 321px) {
+    .filter__form {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        height: 100%;
+        gap: 30px;
+        padding-inline: 20px;
+    }
+
+    .filter {
+        margin-bottom: 20px;
+    }
+
+    .filter__title {
+        font-size: 18px;
+    }
+
+    .select:nth-child(1) {
+        width: 300px;
+    }
+
+    .select:nth-child(2) {
+        width: 300px;
+    }
+
+    .select:nth-child(3) {
+        width: 100%;
+    }
+
+    .filter_btn {
+        width: 100%;
+    }
+}
 </style>

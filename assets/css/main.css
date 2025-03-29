@@ -72,10 +72,25 @@ button {
     .container {
         max-width: 350px;
     }
+
+    :root {
+        --card_width: 320px;
+        --card_small: 23;
+        --card_medium: 23;
+        --card_large: 23;
+    }
 }
 
 @media (max-width: 321px) {
     .container {
         max-width: 300px;
     }
+
+    :root {
+        --card_width: 300px;
+        --card_small: 23;
+        --card_medium: 23;
+        --card_large: 23;
+    }
+
 }

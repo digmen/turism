@@ -183,4 +183,16 @@ useHead({
         height: 300px;
     }
 }
+
+@media (min-width: 321px) and (max-width: 376px) {
+    .video {
+        height: 300px;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 321px) {
+    .video {
+        height: 300px;
+    }
+}
 </style>

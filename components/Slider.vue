@@ -190,4 +190,48 @@ useHead({
     font-size: 20px;
   }
 }
+
+@media (min-width: 321px) and (max-width: 376px) {
+  .slider__item-img {
+    width: 400px;
+    height: 300px;
+  }
+
+  .swiper {
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+
+  .slider__item-content {
+    padding-left: 10px;
+    padding-top: 150px;
+  }
+
+  .slider__item-title {
+    width: 300px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 321px) {
+  .slider__item-img {
+    width: 400px;
+    height: 300px;
+  }
+
+  .swiper {
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+
+  .slider__item-content {
+    padding-left: 10px;
+    padding-top: 150px;
+  }
+
+  .slider__item-title {
+    width: 300px;
+    font-size: 20px;
+  }
+}
 </style>

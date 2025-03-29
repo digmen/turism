@@ -370,6 +370,12 @@ header nav {
         height: 90px;
     }
 
+    .header__lang-mobile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
     .mobile-menu {
         top: 70px;
     }
@@ -379,6 +385,12 @@ header nav {
     .logo {
         width: 145px;
         height: 90px;
+    }
+
+    .header__lang-mobile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .mobile-menu {

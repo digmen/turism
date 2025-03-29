@@ -199,4 +199,28 @@ useHead({
     width: 400px;
   }
 }
+
+@media (min-width: 321px) and (max-width: 376px) {
+  .catalog-tour__content {
+    width: 300px;
+  }
+
+  .catalog-tour__item-info {
+    h2 {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: 0px) and (max-width: 321px) {
+  .catalog-tour__content {
+    width: 300px;
+  }
+
+  .catalog-tour__item-info {
+    h2 {
+      font-size: 14px;
+    }
+  }
+}
 </style>
