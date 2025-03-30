@@ -347,6 +347,7 @@ useHead({
 
     .title {
         font-size: 20px;
+        margin-bottom: 15px;
     }
 
     .about_start_content_text {
@@ -361,7 +362,7 @@ useHead({
     }
 
     .about_start {
-        gap: 60px;
+        gap: 50px;
         align-items: center;
     }
 

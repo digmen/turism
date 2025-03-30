@@ -291,6 +291,10 @@ const submitForm = async () => {
             width: 100%;
         }
 
+        input::placeholder,
+        textarea::placeholder {
+            font-size: 16px;
+        }
     }
 
     .contact_btn {
@@ -330,6 +334,11 @@ const submitForm = async () => {
             width: 100%;
         }
 
+        input::placeholder,
+        textarea::placeholder {
+            font-size: 16px;
+        }
+
     }
 
     .btn {
@@ -367,6 +376,11 @@ const submitForm = async () => {
         input[type="text"],
         input[type="email"] {
             width: 100%;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            font-size: 16px;
         }
 
     }
