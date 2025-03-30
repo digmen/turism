@@ -105,7 +105,11 @@ useHead({
     {
       name: 'keywords',
       content: 'туры, каталог туров, путешествия, tours, tours catalog, travel'
-    }
+    },
+    {
+      property: 'og:url',
+      content: 'https://awesomekyrgyztravel.com/'
+    },
   ]
 });
 </script>

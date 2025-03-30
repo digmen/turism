@@ -60,11 +60,11 @@ useHead({
         },
         {
             property: 'og:image',
-            content: 'https://example.com/contacts-image.jpg'
+            content: 'https://awesomekyrgyztravel.com'
         },
         {
             property: 'og:url',
-            content: 'https://example.com/contacts'
+            content: 'https://awesomekyrgyztravel.com/contacts'
         },
         {
             name: 'twitter:card',
@@ -80,11 +80,11 @@ useHead({
         },
         {
             name: 'twitter:image',
-            content: 'https://example.com/contacts-image.jpg'
+            content: 'https://awesomekyrgyztravel.com'
         }
     ],
     link: [
-        { rel: 'canonical', href: 'https://example.com/contacts' }
+        { rel: 'canonical', href: 'https://awesomekyrgyztravel.com/contacts' }
     ]
 });
 

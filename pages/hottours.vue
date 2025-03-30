@@ -70,11 +70,11 @@ useHead({
         },
         {
             property: 'og:image',
-            content: 'https://example.com/hottours-image.jpg'
+            content: 'https://awesomekyrgyztravel.com'
         },
         {
             property: 'og:url',
-            content: 'https://example.com/hottours'
+            content: 'https://awesomekyrgyztravel.com/hottours'
         },
         {
             name: 'twitter:card',
@@ -90,11 +90,11 @@ useHead({
         },
         {
             name: 'twitter:image',
-            content: 'https://example.com/hottours-image.jpg'
+            content: 'https://awesomekyrgyztravel.com'
         }
     ],
     link: [
-        { rel: 'canonical', href: 'https://example.com/hottours' }
+        { rel: 'canonical', href: 'https://awesomekyrgyztravel.com/hottours' }
     ]
 });
 

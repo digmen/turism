@@ -116,11 +116,11 @@ useHead({
         },
         {
             property: 'og:image',
-            content: 'https://example.com/about-image.jpg'
+            content: 'https://awesomekyrgyztravel.com/'
         },
         {
             property: 'og:url',
-            content: 'https://example.com/about'
+            content: 'https://awesomekyrgyztravel.com/about'
         },
         {
             name: 'twitter:card',

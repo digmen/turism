@@ -45,7 +45,7 @@
                                 :alt="$t('footer.whatsapp')">
                         </a>
                         <a class="footer__social-link"
-                            href="https://www.instagram.com/awesome_travel_kg_?igsh=YW9iYTh2cGp0ZXJl&utm_source=qr"
+                            href="https://www.instagram.com/awesome_travel_kg?igsh=MW1wMXA1OGM4MnQyeQ%3D%3D&utm_source=qr"
                             :aria-label="$t('footer.goToInstagram')">
                             <img class="footer__social-icon" src="/assets/images/instagram.svg"
                                 :alt="$t('footer.instagram')">
@@ -116,11 +116,11 @@ useHead({
         },
         {
             property: 'og:image',
-            content: 'https://example.com/footer-thumbnail.jpg'
+            content: 'https://awesomekyrgyztravel.com/'
         },
         {
             property: 'og:url',
-            content: 'https://example.com/footer'
+            content: 'https://awesomekyrgyztravel.com/'
         }
     ]
 });

@@ -89,7 +89,7 @@ useHead({
         },
         {
             property: 'og:image',
-            content: 'https://example.com/video-thumbnail.jpg'
+            content: 'https://awesomekyrgyztravel.com/ru'
         },
         {
             property: 'og:url',
@@ -109,7 +109,7 @@ useHead({
         },
         {
             name: 'twitter:image',
-            content: 'https://example.com/video-thumbnail.jpg'
+            content: 'https://awesomekyrgyztravel.com/ru'
         }
     ]
 });

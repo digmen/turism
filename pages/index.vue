@@ -94,11 +94,11 @@ useHead({
         },
         {
             property: 'og:image',
-            content: 'https://example.com/image.jpg'
+            content: 'https://awesomekyrgyztravel.com'
         },
         {
             property: 'og:url',
-            content: 'https://example.com/current-page'
+            content: 'https://awesomekyrgyztravel.com'
         },
         {
             name: 'twitter:card',
@@ -114,11 +114,11 @@ useHead({
         },
         {
             name: 'twitter:image',
-            content: 'https://example.com/image.jpg'
+            content: 'https://awesomekyrgyztravel.com'
         }
     ],
     link: [
-        { rel: 'canonical', href: 'https://example.com/current-page' }
+        { rel: 'canonical', href: 'https://awesomekyrgyztravel.com' }
     ]
 });
 </script>

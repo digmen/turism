@@ -79,11 +79,11 @@ useHead({
     },
     {
       property: 'og:image',
-      content: 'https://example.com/slider-thumbnail.jpg'
+      content: 'https://awesomekyrgyztravel.com/ru'
     },
     {
       property: 'og:url',
-      content: 'https://example.com/slider'
+      content: 'https://awesomekyrgyztravel.com/ru'
     }
   ]
 });
